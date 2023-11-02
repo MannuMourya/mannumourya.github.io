@@ -5,6 +5,7 @@ toggle.addEventListener('click' , function(){
     collapse.forEach(col => col.classList.toggle("collapse-toggle"));
 })
 
+
 // with masonry
 new Masonry("#posts .grid", {
     itemSelector : '.grid-item',
@@ -45,8 +46,13 @@ window.onscroll = function(){ myFunction()};
 // get the current value 
 let navbar = document.getElementById("header");
 
+
+
 // get the navbar position
 let sticky = navbar.offsetTop;
+
+
+
 
 // sticky function
 function myFunction(){
