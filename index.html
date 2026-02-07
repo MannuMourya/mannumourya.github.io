@@ -10,7 +10,7 @@
       --glass-2: rgba(255, 40, 70, 0.18);
       --stroke: rgba(255, 255, 255, 0.18);
       --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.70);
+      --muted: rgba(255,255,255,0.72);
       --red: #ff2b63;
       --red2:#ff5a8a;
       --shadow: 0 18px 60px rgba(0,0,0,0.45);
@@ -21,13 +21,13 @@
     html,body{ height:100%; }
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
       color: var(--text);
       overflow:hidden;
       background:#000;
     }
 
-    /* Background image (your photo) */
+    /* Background */
     #bg{
       position:fixed;
       inset:0;
@@ -41,13 +41,13 @@
       will-change: transform, filter;
     }
 
-    /* Romantic overlays for readability */
+    /* Romantic overlays */
     .vignette{
       position:fixed; inset:0;
       background:
         radial-gradient(1200px 700px at 35% 30%, rgba(255, 40, 90, 0.10), transparent 55%),
         radial-gradient(900px 600px at 70% 60%, rgba(255, 0, 80, 0.12), transparent 60%),
-        linear-gradient(180deg, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.55) 100%);
+        linear-gradient(180deg, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.14) 40%, rgba(0,0,0,0.58) 100%);
       z-index:-2;
       pointer-events:none;
     }
@@ -65,7 +65,7 @@
       to{ transform:translate3d(-5%, -5%, 0); }
     }
 
-    /* App layout */
+    /* Layout */
     .app{
       position:relative;
       height:100%;
@@ -87,13 +87,22 @@
       -webkit-backdrop-filter: blur(var(--blur));
       overflow:hidden;
       position:relative;
+
+      transform: translateY(10px) scale(0.99);
+      opacity:0;
+      animation: enter 1200ms cubic-bezier(.2,.85,.15,1) forwards;
     }
+    @keyframes enter{
+      to{ transform: translateY(0) scale(1); opacity:1; }
+    }
+
     .card::before{
       content:"";
       position:absolute;
       inset:-2px;
-      background: radial-gradient(800px 240px at 20% 10%, rgba(255,90,138,.26), transparent 60%),
-                  radial-gradient(600px 220px at 85% 20%, rgba(255,43,99,.22), transparent 62%);
+      background:
+        radial-gradient(800px 240px at 20% 10%, rgba(255,90,138,.26), transparent 60%),
+        radial-gradient(600px 220px at 85% 20%, rgba(255,43,99,.22), transparent 62%);
       pointer-events:none;
       filter: blur(12px);
       opacity:.75;
@@ -114,7 +123,7 @@
       text-shadow: 0 10px 26px rgba(255, 43, 99, 0.22);
     }
     .subtitle{
-      font-weight: 800;
+      font-weight: 850;
       color: var(--muted);
       letter-spacing:.25px;
       font-size: 13px;
@@ -125,13 +134,13 @@
       border-radius:999px;
       background: rgba(255, 43, 99, 0.12);
       border: 1px solid rgba(255,255,255,0.16);
-      font-weight: 800;
+      font-weight: 900;
       color: rgba(255,255,255,0.86);
       user-select:none;
       white-space:nowrap;
     }
 
-    /* Story */
+    /* Story area */
     #stage{
       display:grid;
       gap:14px;
@@ -156,9 +165,9 @@
       position:relative;
       font-size: clamp(15px, 2.0vw, 18px);
       line-height: 1.65;
-      font-weight: 850;
+      font-weight: 900;
       letter-spacing: .15px;
-      color: rgba(255,255,255,0.92);
+      color: rgba(255,255,255,0.93);
       text-shadow: 0 10px 28px rgba(0,0,0,0.35);
       white-space: pre-wrap;
       margin:0;
@@ -184,18 +193,18 @@
       flex-wrap:wrap;
       padding-top:2px;
       color: rgba(255,255,255,0.78);
-      font-weight:800;
+      font-weight:900;
       font-size: 12.5px;
     }
 
-    /* Valentine prompt */
+    /* Valentine */
     #valentine{
       display:none;
       gap:14px;
       padding-top:10px;
     }
     .question{
-      font-weight: 950;
+      font-weight: 1000;
       font-size: clamp(18px, 2.4vw, 24px);
       letter-spacing: .35px;
       text-align:center;
@@ -210,6 +219,7 @@
       justify-content:center;
       gap:14px;
       user-select:none;
+      touch-action: manipulation;
     }
     button{
       border:none;
@@ -217,7 +227,7 @@
       cursor:pointer;
       padding: 12px 16px;
       border-radius: 16px;
-      font-weight: 950;
+      font-weight: 1000;
       letter-spacing: .4px;
       color: rgba(255,255,255,0.94);
       background: linear-gradient(135deg, rgba(255,43,99,0.92), rgba(255,90,138,0.88));
@@ -245,13 +255,13 @@
     .success h2{
       margin: 6px 0 4px;
       font-size: clamp(22px, 3vw, 32px);
-      font-weight: 1000;
+      font-weight: 1100;
       letter-spacing:.4px;
     }
     .success p{
       margin:0;
-      color: rgba(255,255,255,0.82);
-      font-weight: 850;
+      color: rgba(255,255,255,0.84);
+      font-weight: 900;
       line-height:1.6;
     }
 
@@ -265,12 +275,14 @@
       padding:24px;
       z-index:50;
     }
+    /* ✅ IMPORTANT FIX: pseudo overlay can't steal taps */
     .lockOverlay::before{
       content:"";
       position:absolute; inset:0;
       background: rgba(0,0,0,0.45);
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
+      pointer-events:none;
     }
     .lockCard{
       width:min(520px, 92vw);
@@ -287,8 +299,9 @@
     .lockCard::before{
       content:"";
       position:absolute; inset:-2px;
-      background: radial-gradient(700px 240px at 30% 10%, rgba(255,90,138,.32), transparent 62%),
-                  radial-gradient(600px 220px at 85% 30%, rgba(255,43,99,.28), transparent 60%);
+      background:
+        radial-gradient(700px 240px at 30% 10%, rgba(255,90,138,.32), transparent 62%),
+        radial-gradient(600px 220px at 85% 30%, rgba(255,43,99,.28), transparent 60%);
       filter: blur(12px);
       opacity:.85;
       pointer-events:none;
@@ -296,14 +309,14 @@
     .lockCard > *{ position:relative; z-index:1; }
     .lockTitle{
       font-size: clamp(18px, 2.6vw, 24px);
-      font-weight: 1000;
+      font-weight: 1100;
       letter-spacing:.35px;
       margin:0 0 6px;
     }
     .lockHint{
       margin:0 0 14px;
       color: rgba(255,255,255,0.78);
-      font-weight: 850;
+      font-weight: 900;
       line-height:1.55;
       font-size: 13px;
     }
@@ -319,7 +332,7 @@
       background: rgba(0,0,0,0.20);
       color: rgba(255,255,255,0.92);
       padding: 12px 14px;
-      font-weight: 950;
+      font-weight: 1000;
       letter-spacing: .9px;
       text-transform: uppercase;
       outline:none;
@@ -327,21 +340,22 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
-    input::placeholder{ color: rgba(255,255,255,0.55); font-weight:850; }
+    input::placeholder{ color: rgba(255,255,255,0.55); font-weight:900; }
     .smallBtn{
       padding:12px 14px;
       border-radius: 16px;
       white-space:nowrap;
+      touch-action: manipulation;
     }
     .error{
       margin-top:10px;
-      font-weight: 900;
+      font-weight: 950;
       color: rgba(255, 190, 205, 0.95);
       text-shadow: 0 12px 28px rgba(255,43,99,0.18);
       display:none;
     }
 
-    /* Locked blur state */
+    /* Locked blur */
     body.locked #mainUI{
       filter: blur(14px) saturate(0.95);
       transform: scale(0.995);
@@ -384,10 +398,9 @@
     }
     #fx.on{ opacity:1; }
 
-    /* Zoom to flower finale */
+    /* Zoom finale */
     body.zoom #bg{
-      /* zoom in and shift toward the flower (roughly center-lower area) */
-      transform: scale(1.7) translate3d(-10%, 12%, 0);
+      transform: scale(1.7) translate3d(-10%, 12%, 0); /* tweak if you want */
       filter: saturate(1.15) contrast(1.08) brightness(1.02);
     }
     body.zoom .card{
@@ -397,17 +410,7 @@
       pointer-events:none;
     }
 
-    /* Gentle entrance */
-    .card{
-      transform: translateY(10px) scale(0.99);
-      opacity:0;
-      animation: enter 1200ms cubic-bezier(.2,.85,.15,1) forwards;
-    }
-    @keyframes enter{
-      to{ transform: translateY(0) scale(1); opacity:1; }
-    }
-
-    /* Reduce motion support */
+    /* Reduce motion */
     @media (prefers-reduced-motion: reduce){
       .card, .heart, #bg{ animation:none !important; transition:none !important; }
       .cursor{ animation:none !important; opacity:1; }
@@ -416,15 +419,11 @@
 </head>
 
 <body class="locked">
-  <!-- Your background image -->
   <img id="bg" src="bg.jpg" alt="Background" />
   <div class="vignette"></div>
   <div class="grain"></div>
 
-  <!-- Subtle hearts always running -->
   <div id="heartsLayer"></div>
-
-  <!-- Fireworks -->
   <canvas id="fx"></canvas>
 
   <div class="app" id="mainUI">
@@ -465,7 +464,6 @@
     </div>
   </div>
 
-  <!-- Password gate -->
   <div class="lockOverlay" id="lock">
     <div class="lockCard">
       <h1 class="lockTitle">Tell me laddu what's the password</h1>
@@ -483,9 +481,14 @@
 
   <script>
     /********************
-     * Tiny twinkling hearts (elegant, not frequent)
+     * Safe helpers
      ********************/
-    const heartsLayer = document.getElementById("heartsLayer");
+    const $ = (id) => document.getElementById(id);
+
+    /********************
+     * Subtle twinkling hearts
+     ********************/
+    const heartsLayer = $("heartsLayer");
     const heartChars = ["❤","💗","💓","💖","💕"];
 
     function spawnHeart({burst=false} = {}){
@@ -493,16 +496,13 @@
       h.className = "heart";
       h.textContent = heartChars[(Math.random()*heartChars.length)|0];
 
-      // Position anywhere, but keep it tasteful
       const x = Math.random()*100;
       const y = Math.random()*100;
 
-      // Subtle motion
       const dx = (Math.random()*40 - 20).toFixed(1) + "px";
       const dy = (Math.random()*70 + 30).toFixed(1) + "px";
       const dur = (Math.random()*1200 + (burst ? 900 : 1400)).toFixed(0) + "ms";
-      const op = (burst ? (Math.random()*0.35 + 0.30) : (Math.random()*0.18 + 0.10)).toFixed(2);
-
+      const op  = (burst ? (Math.random()*0.35 + 0.30) : (Math.random()*0.18 + 0.10)).toFixed(2);
       const size = burst ? (Math.random()*14 + 12) : (Math.random()*9 + 10);
 
       h.style.left = x + "vw";
@@ -518,8 +518,7 @@
     }
 
     function heartsLoop(){
-      // Low frequency, random jitter between spawns
-      const next = Math.random()*1600 + 900; // 0.9s - 2.5s (elegant)
+      const next = Math.random()*1600 + 900; // elegant frequency
       spawnHeart();
       setTimeout(heartsLoop, next);
     }
@@ -532,12 +531,12 @@
     }
 
     /********************
-     * Password Gate
+     * Password Gate (mobile-safe)
      ********************/
-    const lock = document.getElementById("lock");
-    const pwd = document.getElementById("pwd");
-    const unlockBtn = document.getElementById("unlockBtn");
-    const err = document.getElementById("err");
+    const lock = $("lock");
+    const pwd = $("pwd");
+    const unlockBtn = $("unlockBtn");
+    const err = $("err");
 
     const PASSWORD = "25SEP";
 
@@ -546,14 +545,15 @@
       if(val === PASSWORD){
         err.style.display = "none";
         document.body.classList.remove("locked");
+
         lock.style.transition = "opacity 700ms ease, transform 700ms ease";
         lock.style.opacity = "0";
         lock.style.transform = "scale(1.02)";
         setTimeout(()=> lock.remove(), 740);
+
         startStory();
       }else{
         err.style.display = "block";
-        // Cute shake
         const card = lock.querySelector(".lockCard");
         card.animate([
           { transform: "translateX(0)" },
@@ -567,18 +567,18 @@
     }
 
     unlockBtn.addEventListener("click", tryUnlock);
-    pwd.addEventListener("keydown", (e)=>{
-      if(e.key === "Enter") tryUnlock();
-    });
+    unlockBtn.addEventListener("touchend", (e)=>{ e.preventDefault(); tryUnlock(); }, { passive:false });
 
-    // Auto focus
+    pwd.addEventListener("keydown", (e)=>{ if(e.key === "Enter") tryUnlock(); });
+
+    // Focus after load
     setTimeout(()=>pwd.focus(), 300);
 
     /********************
      * Story mode (typewriter)
      ********************/
-    const storyText = document.getElementById("storyText");
-    const valentine = document.getElementById("valentine");
+    const storyText = $("storyText");
+    const valentine = $("valentine");
 
     const STORY = [
       "Laddu i love you i love you since we were kids…\n\n",
@@ -611,7 +611,6 @@
         }
 
         const line = lines[li];
-        // Slightly varied pacing feels sweet
         const baseDelay = 16 + Math.random()*22;
 
         current += line[ci];
@@ -623,7 +622,6 @@
         if(ci >= line.length){
           li++;
           ci = 0;
-          // gentle pause between chunks
           setTimeout(tick, 450 + Math.random()*250);
         }else{
           setTimeout(tick, baseDelay);
@@ -634,7 +632,6 @@
 
     function startStory(){
       typeLines(STORY, ()=>{
-        // reveal valentine prompt softly
         valentine.style.display = "grid";
         valentine.animate(
           [{ opacity:0, transform:"translateY(10px)" }, { opacity:1, transform:"translateY(0)" }],
@@ -644,14 +641,13 @@
     }
 
     /********************
-     * Playful NO button that can't be clicked 😄
+     * NO button dodges (unclickable)
      ********************/
-    const btnArena = document.getElementById("btnArena");
-    const yesBtn = document.getElementById("yesBtn");
-    const noBtn  = document.getElementById("noBtn");
-    const success = document.getElementById("success");
+    const btnArena = $("btnArena");
+    const yesBtn = $("yesBtn");
+    const noBtn  = $("noBtn");
+    const success = $("success");
 
-    // initial position for NO
     function placeNoInitial(){
       const rect = btnArena.getBoundingClientRect();
       noBtn.style.left = (rect.width/2 + 60) + "px";
@@ -665,9 +661,20 @@
       const rect = btnArena.getBoundingClientRect();
       const padding = 10;
 
-      // sometimes vanish briefly then reappear elsewhere
       if(Math.random() < 0.22){
         noBtn.style.opacity = "0";
         noBtn.style.pointerEvents = "none";
         setTimeout(()=>{
-       
+          noBtn.style.pointerEvents = "auto";
+          noBtn.style.opacity = "1";
+          const x = padding + Math.random()*(rect.width - padding*2);
+          const y = padding + Math.random()*(rect.height - padding*2);
+          noBtn.style.transition = "transform 260ms ease, left 260ms ease, top 260ms ease, opacity 220ms ease";
+          noBtn.style.left = x + "px";
+          noBtn.style.top  = y + "px";
+          noBtn.style.transform = "translate(-50%, -50%)";
+        }, 420);
+        return;
+      }
+
+      const x = padding + Math.random()*(rect.width - padd
