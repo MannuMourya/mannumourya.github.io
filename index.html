@@ -677,4 +677,146 @@
         return;
       }
 
-      const x = padding + Math.random()*(rect.width - padd
+      const x = padding + Math.random()*(rect.width - padding*2);
+      const y = padding + Math.random()*(rect.height - padding*2);
+
+      noBtn.style.transition = "transform 260ms ease, left 260ms ease, top 260ms ease";
+      noBtn.style.left = x + "px";
+      noBtn.style.top  = y + "px";
+      noBtn.style.transform = "translate(-50%, -50%)";
+    }
+
+    ["mouseenter","pointerenter","touchstart","mousedown"].forEach(evt=>{
+      noBtn.addEventListener(evt, (e)=>{
+        e.preventDefault();
+        moveNoButton();
+      }, { passive:false });
+    });
+
+    /********************
+     * Fireworks (safe: will not crash if canvas unsupported)
+     ********************/
+    let fx = $("fx");
+    let ctx = fx?.getContext?.("2d");
+
+    if(!ctx){
+      console.warn("Canvas not available; fireworks disabled.");
+      fx?.remove();
+      fx = null;
+      ctx = null;
+    }
+
+    let W=0, H=0;
+    const particles = [];
+    const rand = (min,max)=> Math.random()*(max-min)+min;
+
+    function resizeFX(){
+      if(!fx || !ctx) return;
+      W = fx.width  = window.innerWidth * devicePixelRatio;
+      H = fx.height = window.innerHeight * devicePixelRatio;
+      fx.style.width = window.innerWidth + "px";
+      fx.style.height = window.innerHeight + "px";
+      ctx.setTransform(1,0,0,1,0,0);
+    }
+    window.addEventListener("resize", resizeFX);
+    resizeFX();
+
+    function addFirework(){
+      if(!fx || !ctx) return;
+      const x = rand(W*0.18, W*0.82);
+      const y = rand(H*0.18, H*0.55);
+      const count = (rand(60, 90))|0;
+
+      for(let i=0;i<count;i++){
+        const a = rand(0, Math.PI*2);
+        const sp = rand(3.2, 7.2) * devicePixelRatio;
+        particles.push({
+          x, y,
+          vx: Math.cos(a)*sp,
+          vy: Math.sin(a)*sp,
+          life: rand(40, 75),
+          age: 0,
+          hue: rand(330, 20)
+        });
+      }
+    }
+
+    function stepFX(){
+      if(!fx || !ctx) return;
+
+      ctx.clearRect(0,0,W,H);
+      ctx.fillStyle = "rgba(0,0,0,0.14)";
+      ctx.fillRect(0,0,W,H);
+
+      for(let i=particles.length-1;i>=0;i--){
+        const p = particles[i];
+        p.age++;
+        if(p.age >= p.life){
+          particles.splice(i,1);
+          continue;
+        }
+
+        p.vx *= 0.985;
+        p.vy *= 0.985;
+        p.vy += 0.06 * devicePixelRatio;
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        const t = 1 - (p.age / p.life);
+        const alpha = Math.max(0, t);
+
+        ctx.beginPath();
+        ctx.fillStyle = `hsla(${p.hue}, 95%, 70%, ${alpha})`;
+        ctx.arc(p.x, p.y, (1.6 + (1-t)*1.2) * devicePixelRatio, 0, Math.PI*2);
+        ctx.fill();
+      }
+
+      if(particles.length > 0){
+        requestAnimationFrame(stepFX);
+      }else{
+        fx.classList.remove("on");
+        ctx.clearRect(0,0,W,H);
+      }
+    }
+
+    function startFireworks(durationMs=2600){
+      if(!fx || !ctx) return;
+      fx.classList.add("on");
+      const start = performance.now();
+
+      (function loop(t){
+        if(t - start < durationMs){
+          if(Math.random() < 0.22) addFirework();
+          requestAnimationFrame(loop);
+        }
+      })(start);
+
+      addFirework(); addFirework();
+      if(particles.length === 0) addFirework();
+      requestAnimationFrame(stepFX);
+    }
+
+    /********************
+     * YES celebration + zoom into flower
+     ********************/
+    yesBtn.addEventListener("click", ()=>{
+      yesBtn.disabled = true;
+      noBtn.disabled = true;
+      noBtn.style.pointerEvents = "none";
+      noBtn.style.opacity = "0.25";
+
+      heartBurst(70);
+      startFireworks(3200);
+
+      success.style.display = "block";
+      success.animate(
+        [{ opacity:0, transform:"translateY(8px)" }, { opacity:1, transform:"translateY(0)" }],
+        { duration: 750, easing:"cubic-bezier(.2,.85,.15,1)" }
+      );
+
+      setTimeout(()=> document.body.classList.add("zoom"), 900);
+    });
+  </script>
+</body>
+</html>
