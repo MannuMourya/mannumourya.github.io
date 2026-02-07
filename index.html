@@ -1,1743 +1,673 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- ✅ On-page SEO: Title Tag -->
-  <title>Neon Relic Runner | 5-Level Arcade Adventure by Mannu Mourya</title>
-
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <!-- ✅ On-page SEO: Meta Description -->
-  <meta name="description" content="Play Neon Relic Runner—an ultra-polished 5-level arcade adventure with glowing visuals, particles, and smooth controls. Built to be hosted on GitHub Pages. Created by Mannu Mourya." />
-
-  <!-- ✅ On-page SEO: Meta Keywords (less important today, but included as requested) -->
-  <meta name="keywords" content="Neon Relic Runner, browser game, GitHub Pages game, HTML5 canvas game, JavaScript game, CSS graphics, 5 levels, arcade adventure, SEO demo" />
-
-  <!-- ✅ On-page SEO: Canonical URL (replace with your final GitHub Pages URL) -->
-  <link rel="canonical" href="https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME/" />
-
-  <!-- Open Graph / Social preview (nice-to-have) -->
-  <meta property="og:title" content="Neon Relic Runner | 5-Level Arcade Adventure" />
-  <meta property="og:description" content="A neon-glow arcade runner with 5 levels, particles, and smooth controls. Host it on GitHub Pages." />
-  <meta property="og:type" content="website" />
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Laddu ❤️</title>
   <style>
     :root{
-      --bg0:#050610;
-      --bg1:#070a1a;
-      --panel:rgba(255,255,255,.06);
-      --panel2:rgba(255,255,255,.10);
-      --text:#eaf2ff;
-      --muted:rgba(234,242,255,.72);
-      --neon:#64f6ff;
-      --neon2:#ff55e5;
-      --gold:#ffd36a;
-      --danger:#ff4b5c;
-      --ok:#30ff9a;
-      --shadow: 0 24px 80px rgba(0,0,0,.55);
-      --glow: 0 0 18px rgba(100,246,255,.35), 0 0 42px rgba(255,85,229,.18);
+      --glass: rgba(255, 40, 70, 0.12);
+      --glass-2: rgba(255, 40, 70, 0.18);
+      --stroke: rgba(255, 255, 255, 0.18);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --red: #ff2b63;
+      --red2:#ff5a8a;
+      --shadow: 0 18px 60px rgba(0,0,0,0.45);
+      --blur: 18px;
     }
 
     *{ box-sizing:border-box; }
-    html, body{ height:100%; margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; color:var(--text); background:radial-gradient(1200px 900px at 30% 20%, #0b1440 0%, var(--bg0) 55%, #03040b 100%); overflow:hidden; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      overflow:hidden;
+      background:#000;
+    }
 
-    /* subtle animated background grid */
-    .bgGrid{
-      position:fixed; inset:-40%;
+    /* Background image (your photo) */
+    #bg{
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transform: translateZ(0) scale(1.02);
+      filter: saturate(1.08) contrast(1.05);
+      z-index:-3;
+      transition: transform 2600ms cubic-bezier(.2,.85,.15,1), filter 2600ms cubic-bezier(.2,.85,.15,1);
+      will-change: transform, filter;
+    }
+
+    /* Romantic overlays for readability */
+    .vignette{
+      position:fixed; inset:0;
       background:
-        linear-gradient(rgba(100,246,255,.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,85,229,.06) 1px, transparent 1px);
-      background-size: 72px 72px;
-      transform: rotate(12deg);
-      filter: blur(.2px);
-      animation: drift 18s linear infinite;
-      opacity:.35;
+        radial-gradient(1200px 700px at 35% 30%, rgba(255, 40, 90, 0.10), transparent 55%),
+        radial-gradient(900px 600px at 70% 60%, rgba(255, 0, 80, 0.12), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.55) 100%);
+      z-index:-2;
       pointer-events:none;
     }
+    .grain{
+      position:fixed; inset:-20%;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+      opacity:.10;
+      mix-blend-mode: overlay;
+      z-index:-1;
+      pointer-events:none;
+      animation: drift 10s linear infinite;
+    }
     @keyframes drift{
-      from{ transform: translate3d(-2%, -2%, 0) rotate(12deg); }
-      to{ transform: translate3d(2%, 2%, 0) rotate(12deg); }
+      from{ transform:translate3d(0,0,0); }
+      to{ transform:translate3d(-5%, -5%, 0); }
     }
 
-    /* Layout */
-    .shell{
+    /* App layout */
+    .app{
       position:relative;
       height:100%;
-      display:grid;
-      grid-template-columns: 380px 1fr;
-      gap: 18px;
-      padding: 18px;
-    }
-
-    @media (max-width: 980px){
-      body{ overflow:auto; }
-      .shell{ grid-template-columns: 1fr; height:auto; }
-      #gameWrap{ height:60vh; min-height:420px; }
-      html, body{ overflow:auto; }
-    }
-
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      overflow:hidden;
-    }
-
-    .left{
       display:flex;
-      flex-direction:column;
-      gap: 14px;
-      min-height: 0;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
     }
+
+    /* Glass card */
+    .card{
+      width:min(760px, 92vw);
+      padding: 22px 22px 18px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, var(--glass), rgba(255,255,255,0.06));
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      overflow:hidden;
+      position:relative;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(800px 240px at 20% 10%, rgba(255,90,138,.26), transparent 60%),
+                  radial-gradient(600px 220px at 85% 20%, rgba(255,43,99,.22), transparent 62%);
+      pointer-events:none;
+      filter: blur(12px);
+      opacity:.75;
+    }
+    .card > *{ position:relative; z-index:1; }
 
     .brand{
-      padding: 16px 16px 14px 16px;
-      position:relative;
-    }
-    .brandRow{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-    }
-    .logo{
-      width:54px; height:54px;
-      border-radius: 16px;
-      background:
-        radial-gradient(14px 14px at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,0) 60%),
-        radial-gradient(70px 70px at 30% 80%, rgba(100,246,255,.50), rgba(100,246,255,0) 60%),
-        radial-gradient(70px 70px at 80% 20%, rgba(255,85,229,.40), rgba(255,85,229,0) 60%),
-        linear-gradient(145deg, rgba(255,255,255,.18), rgba(255,255,255,.04));
-      box-shadow: var(--glow);
-      border: 1px solid rgba(255,255,255,.18);
-      display:grid;
-      place-items:center;
-      position:relative;
-      overflow:hidden;
-    }
-    .logo::after{
-      content:"";
-      position:absolute; inset:-60%;
-      background: conic-gradient(from 0deg, rgba(100,246,255,.0), rgba(100,246,255,.55), rgba(255,85,229,.45), rgba(100,246,255,.0));
-      animation: spin 4.8s linear infinite;
-      filter: blur(1px);
-      opacity:.9;
-    }
-    .logo span{
-      position:relative;
-      z-index:1;
-      font-weight:800;
-      letter-spacing:.5px;
-      color:#081021;
-      background: rgba(255,255,255,.85);
-      border-radius: 12px;
-      padding: 6px 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-    @keyframes spin { to{ transform: rotate(360deg); } }
-
-    /* ✅ On-page SEO: Image Alt Text */
-    .srOnlyImg{
-      position:absolute;
-      width:1px; height:1px;
-      overflow:hidden;
-      clip:rect(0 0 0 0);
-      white-space:nowrap;
-    }
-
-    /* ✅ On-page SEO: Header tags for structure */
-    h1{
-      margin:0;
-      font-size: 20px;
-      line-height:1.1;
-      letter-spacing:.2px;
-    }
-    .sub{
-      margin:6px 0 0 0;
-      color:var(--muted);
-      font-size: 13px;
-    }
-    .badgeRow{
-      margin-top: 10px;
-      display:flex; flex-wrap:wrap; gap:8px;
-    }
-    .chip{
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color: rgba(234,242,255,.88);
-    }
-    .chip strong{ color: var(--neon); font-weight:700; }
-
-    .nav{
-      display:flex; gap:10px;
-      padding: 0 16px 14px 16px;
-      flex-wrap:wrap;
-    }
-    .btn{
-      appearance:none;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      border-radius: 14px;
-      padding: 10px 12px;
-      cursor:pointer;
-      font-weight:650;
-      font-size: 13px;
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      user-select:none;
-    }
-    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.22); }
-    .btn:active{ transform: translateY(0px) scale(.99); }
-    .btnPrimary{
-      background: linear-gradient(135deg, rgba(100,246,255,.22), rgba(255,85,229,.18));
-      border-color: rgba(100,246,255,.30);
-      box-shadow: 0 12px 30px rgba(100,246,255,.10);
-    }
-    .btnDanger{ border-color: rgba(255,75,92,.35); }
-
-    .panel{
-      padding: 14px 16px;
-      border-top: 1px solid rgba(255,255,255,.10);
-    }
-
-    .stats{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-    }
-    .stat{
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
-      border-radius: 14px;
-      padding: 10px;
-      position:relative;
-      overflow:hidden;
-    }
-    .stat::before{
-      content:"";
-      position:absolute; inset:-40%;
-      background: radial-gradient(closest-side, rgba(100,246,255,.18), transparent 70%);
-      opacity:.65;
-      transform: translate3d(-10%, -10%, 0);
-    }
-    .stat h3{
-      margin:0;
-      font-size: 12px;
-      color: rgba(234,242,255,.70);
-      font-weight:650;
-      position:relative;
-      z-index:1;
-    }
-    .stat .v{
-      margin-top:6px;
-      font-size: 18px;
-      font-weight:800;
-      position:relative;
-      z-index:1;
-    }
-
-    .hint{
-      margin-top: 12px;
-      color: rgba(234,242,255,.72);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-    .kbd{
-      display:inline-block;
-      padding: 2px 8px;
-      border-radius: 10px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      font-weight:800;
-      font-size: 12px;
-      margin:0 2px;
-    }
-
-    .tabs{
-      display:flex;
-      gap:10px;
-      padding: 12px 16px 0 16px;
-      flex-wrap:wrap;
-    }
-    .tab{
-      cursor:pointer;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-      color: rgba(234,242,255,.85);
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-weight: 750;
-      font-size: 12px;
-    }
-    .tab.active{
-      background: rgba(100,246,255,.12);
-      border-color: rgba(100,246,255,.30);
-      color: var(--text);
-      box-shadow: 0 0 0 6px rgba(100,246,255,.07);
-    }
-
-    .section{
-      padding: 12px 16px 16px 16px;
-      display:none;
-    }
-    .section.active{ display:block; }
-
-    .about{
-      font-size: 13px;
-      line-height: 1.6;
-      color: rgba(234,242,255,.82);
-    }
-    .about h2{
-      margin: 10px 0 8px 0;
-      font-size: 14px;
-      letter-spacing:.2px;
-    }
-    .about ul{ margin: 8px 0 0 18px; padding:0; }
-    .about li{ margin: 6px 0; }
-
-    /* Right side game */
-    #gameWrap{
-      position:relative;
-      min-height: 0;
-      display:flex;
-      flex-direction:column;
-    }
-    .gameTop{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      padding: 12px 14px;
-      border-bottom:1px solid rgba(255,255,255,.10);
-      gap:12px;
+      gap:16px;
+      margin-bottom:10px;
     }
-    .gameTop .mini{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      color: rgba(234,242,255,.78);
-      font-size: 12px;
+    .title{
+      font-weight: 900;
+      letter-spacing: .6px;
+      font-size: clamp(20px, 2.6vw, 28px);
+      text-shadow: 0 10px 26px rgba(255, 43, 99, 0.22);
+    }
+    .subtitle{
+      font-weight: 800;
+      color: var(--muted);
+      letter-spacing:.25px;
+      font-size: 13px;
+      margin-top:2px;
     }
     .pill{
-      padding: 6px 10px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-    }
-    canvas{
-      width:100%;
-      height:100%;
-      display:block;
-      background: radial-gradient(900px 600px at 40% 20%, rgba(100,246,255,.12), transparent 60%),
-                  radial-gradient(900px 600px at 70% 80%, rgba(255,85,229,.10), transparent 60%),
-                  linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.35));
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(255, 43, 99, 0.12);
+      border: 1px solid rgba(255,255,255,0.16);
+      font-weight: 800;
+      color: rgba(255,255,255,0.86);
+      user-select:none;
+      white-space:nowrap;
     }
 
-    .overlay{
-      position:absolute; inset:0;
+    /* Story */
+    #stage{
       display:grid;
-      place-items:center;
+      gap:14px;
+      padding-top:10px;
+    }
+    .storyBox{
+      min-height: 210px;
+      padding:16px 16px 14px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(255, 43, 99, 0.14), rgba(255,255,255,0.06));
+      border: 1px solid rgba(255,255,255,0.14);
+      position:relative;
+      overflow:hidden;
+    }
+    .storyBox::after{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(500px 160px at 15% 15%, rgba(255,90,138,.18), transparent 62%);
       pointer-events:none;
     }
-    .modal{
-      width:min(620px, 92%);
-      border-radius: 18px;
-      border:1px solid rgba(255,255,255,.18);
-      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(0,0,0,.35));
-      box-shadow: var(--shadow);
-      padding: 16px;
-      pointer-events:auto;
+    #storyText{
+      position:relative;
+      font-size: clamp(15px, 2.0vw, 18px);
+      line-height: 1.65;
+      font-weight: 850;
+      letter-spacing: .15px;
+      color: rgba(255,255,255,0.92);
+      text-shadow: 0 10px 28px rgba(0,0,0,0.35);
+      white-space: pre-wrap;
+      margin:0;
     }
-    .modal h2{
-      margin: 0 0 6px 0;
-      font-size: 18px;
-      letter-spacing:.3px;
+    .cursor{
+      display:inline-block;
+      width:10px;
+      height:1.1em;
+      transform: translateY(2px);
+      background: rgba(255,255,255,0.75);
+      margin-left:4px;
+      border-radius: 2px;
+      animation: blink 1.05s steps(2,end) infinite;
+      vertical-align: baseline;
     }
-    .modal p{
-      margin: 0 0 12px 0;
-      color: rgba(234,242,255,.78);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-    .modal .row{
-      display:flex; gap:10px; flex-wrap:wrap;
-    }
-    .small{
-      font-size: 12px;
-      color: rgba(234,242,255,.66);
-      margin-top: 10px;
-    }
-    .glowLine{
-      height:1px;
-      background: linear-gradient(90deg, transparent, rgba(100,246,255,.55), rgba(255,85,229,.55), transparent);
-      margin: 10px 0 12px 0;
-      opacity:.9;
+    @keyframes blink { 50%{ opacity:0; } }
+
+    .hintRow{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      padding-top:2px;
+      color: rgba(255,255,255,0.78);
+      font-weight:800;
+      font-size: 12.5px;
     }
 
-    /* Mobile touch controls */
-    .touch{
-      position:absolute;
-      left: 14px; right:14px; bottom:14px;
+    /* Valentine prompt */
+    #valentine{
       display:none;
-      gap: 10px;
-      pointer-events:none;
+      gap:14px;
+      padding-top:10px;
     }
-    .touch .tbtn{
-      pointer-events:auto;
-      flex:1;
-      padding: 12px 12px;
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.22);
-      color: rgba(234,242,255,.9);
-      font-weight: 850;
+    .question{
+      font-weight: 950;
+      font-size: clamp(18px, 2.4vw, 24px);
+      letter-spacing: .35px;
       text-align:center;
+      margin: 8px 0 6px;
+      text-shadow: 0 12px 30px rgba(255, 43, 99, 0.18);
+    }
+    .btnRow{
+      position:relative;
+      height: 66px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
       user-select:none;
     }
-    @media (max-width: 980px){
-      .touch{ display:flex; }
+    button{
+      border:none;
+      outline:none;
+      cursor:pointer;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-weight: 950;
+      letter-spacing: .4px;
+      color: rgba(255,255,255,0.94);
+      background: linear-gradient(135deg, rgba(255,43,99,0.92), rgba(255,90,138,0.88));
+      box-shadow: 0 16px 45px rgba(255,43,99,0.18), 0 12px 30px rgba(0,0,0,0.35);
+      transform: translateZ(0);
+      transition: transform 160ms ease, filter 160ms ease;
+    }
+    button:hover{ transform: translateY(-1px) scale(1.01); filter: brightness(1.04); }
+    button:active{ transform: translateY(0px) scale(0.99); }
+
+    #noBtn{
+      position:absolute;
+      background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,43,99,0.22));
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 16px 45px rgba(0,0,0,0.30);
     }
 
-    /* Link styling */
-    a{ color: var(--neon); text-decoration: none; }
-    a:hover{ text-decoration: underline; }
+    .success{
+      display:none;
+      text-align:center;
+      padding-top:10px;
+    }
+    .success h2{
+      margin: 6px 0 4px;
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 1000;
+      letter-spacing:.4px;
+    }
+    .success p{
+      margin:0;
+      color: rgba(255,255,255,0.82);
+      font-weight: 850;
+      line-height:1.6;
+    }
 
-    .footerNote{
-      padding: 0 16px 16px 16px;
-      color: rgba(234,242,255,.60);
+    /* Password overlay */
+    .lockOverlay{
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      z-index:50;
+    }
+    .lockOverlay::before{
+      content:"";
+      position:absolute; inset:0;
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .lockCard{
+      width:min(520px, 92vw);
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(255,43,99,0.20), rgba(255,255,255,0.06));
+      border: 1px solid rgba(255,255,255,0.20);
+      box-shadow: 0 22px 70px rgba(0,0,0,0.55);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      padding: 18px 18px 16px;
+      position:relative;
+      overflow:hidden;
+    }
+    .lockCard::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(700px 240px at 30% 10%, rgba(255,90,138,.32), transparent 62%),
+                  radial-gradient(600px 220px at 85% 30%, rgba(255,43,99,.28), transparent 60%);
+      filter: blur(12px);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .lockCard > *{ position:relative; z-index:1; }
+    .lockTitle{
+      font-size: clamp(18px, 2.6vw, 24px);
+      font-weight: 1000;
+      letter-spacing:.35px;
+      margin:0 0 6px;
+    }
+    .lockHint{
+      margin:0 0 14px;
+      color: rgba(255,255,255,0.78);
+      font-weight: 850;
+      line-height:1.55;
+      font-size: 13px;
+    }
+    .lockRow{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    input{
+      flex:1;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(0,0,0,0.20);
+      color: rgba(255,255,255,0.92);
+      padding: 12px 14px;
+      font-weight: 950;
+      letter-spacing: .9px;
+      text-transform: uppercase;
+      outline:none;
+      box-shadow: inset 0 0 0 1px rgba(255,43,99,0.10);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    input::placeholder{ color: rgba(255,255,255,0.55); font-weight:850; }
+    .smallBtn{
+      padding:12px 14px;
+      border-radius: 16px;
+      white-space:nowrap;
+    }
+    .error{
+      margin-top:10px;
+      font-weight: 900;
+      color: rgba(255, 190, 205, 0.95);
+      text-shadow: 0 12px 28px rgba(255,43,99,0.18);
+      display:none;
+    }
+
+    /* Locked blur state */
+    body.locked #mainUI{
+      filter: blur(14px) saturate(0.95);
+      transform: scale(0.995);
+      pointer-events:none;
+      user-select:none;
+    }
+
+    /* Twinkling hearts layer */
+    #heartsLayer{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:10;
+      overflow:hidden;
+    }
+    .heart{
+      position:absolute;
       font-size: 12px;
+      opacity: 0;
+      transform: translate3d(0,0,0) scale(0.9);
+      filter: drop-shadow(0 10px 18px rgba(255,43,99,0.22));
+      animation: floatHeart var(--dur) ease-in forwards;
+      will-change: transform, opacity;
+    }
+    @keyframes floatHeart{
+      0%   { opacity:0; transform: translate3d(0, 8px, 0) scale(0.85); }
+      15%  { opacity:var(--op); }
+      70%  { opacity:var(--op); }
+      100% { opacity:0; transform: translate3d(var(--dx), calc(var(--dy) * -1), 0) scale(1.25); }
+    }
+
+    /* Fireworks canvas */
+    #fx{
+      position:fixed;
+      inset:0;
+      z-index:20;
+      pointer-events:none;
+      opacity:0;
+      transition: opacity 450ms ease;
+    }
+    #fx.on{ opacity:1; }
+
+    /* Zoom to flower finale */
+    body.zoom #bg{
+      /* zoom in and shift toward the flower (roughly center-lower area) */
+      transform: scale(1.7) translate3d(-10%, 12%, 0);
+      filter: saturate(1.15) contrast(1.08) brightness(1.02);
+    }
+    body.zoom .card{
+      transition: opacity 1200ms ease, transform 1200ms ease;
+      opacity:0.02;
+      transform: scale(0.98);
+      pointer-events:none;
+    }
+
+    /* Gentle entrance */
+    .card{
+      transform: translateY(10px) scale(0.99);
+      opacity:0;
+      animation: enter 1200ms cubic-bezier(.2,.85,.15,1) forwards;
+    }
+    @keyframes enter{
+      to{ transform: translateY(0) scale(1); opacity:1; }
+    }
+
+    /* Reduce motion support */
+    @media (prefers-reduced-motion: reduce){
+      .card, .heart, #bg{ animation:none !important; transition:none !important; }
+      .cursor{ animation:none !important; opacity:1; }
     }
   </style>
 </head>
 
-<body>
-  <div class="bgGrid" aria-hidden="true"></div>
+<body class="locked">
+  <!-- Your background image -->
+  <img id="bg" src="bg.jpg" alt="Background" />
+  <div class="vignette"></div>
+  <div class="grain"></div>
 
-  <!-- ✅ SEO/structure: H1 for main title -->
-  <div class="shell">
-    <aside class="left">
-      <div class="card">
-        <div class="brand">
-          <div class="brandRow">
-            <div class="logo" aria-hidden="true"><span>NRR</span></div>
+  <!-- Subtle hearts always running -->
+  <div id="heartsLayer"></div>
 
-            <!-- ✅ Alt text (hidden image for SEO/accessibility requirement) -->
-            <img class="srOnlyImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E"
-                 alt="Neon Relic Runner game logo showing a glowing neon emblem" />
+  <!-- Fireworks -->
+  <canvas id="fx"></canvas>
 
-            <div>
-              <h1>Neon Relic Runner</h1>
-              <div class="sub">A neon-glow arcade adventure — 5 levels, smooth controls, cinematic effects.</div>
-            </div>
-          </div>
-
-          <div class="badgeRow">
-            <div class="chip"><strong>5</strong> Levels</div>
-            <div class="chip"><strong>60</strong> FPS vibe</div>
-            <div class="chip"><strong>∞</strong> Replay</div>
-          </div>
+  <div class="app" id="mainUI">
+    <div class="card" aria-live="polite">
+      <div class="brand">
+        <div>
+          <div class="title">For My Laddu ❤️</div>
+          <div class="subtitle">A tiny page that holds a big feeling.</div>
         </div>
-
-        <nav class="nav" aria-label="Primary">
-          <button class="btn btnPrimary" id="btnStart">▶ Start</button>
-          <button class="btn" id="btnContinue">⏩ Continue</button>
-          <button class="btn" id="btnHow">⌨ How to Play</button>
-          <button class="btn" id="btnSound">🔊 Sound: On</button>
-          <button class="btn btnDanger" id="btnReset">↺ Reset</button>
-        </nav>
-
-        <div class="panel">
-          <div class="stats">
-            <div class="stat">
-              <h3>Level</h3>
-              <div class="v" id="uiLevel">—</div>
-            </div>
-            <div class="stat">
-              <h3>Relics Collected</h3>
-              <div class="v" id="uiRelics">0</div>
-            </div>
-            <div class="stat">
-              <h3>Lives</h3>
-              <div class="v" id="uiLives">—</div>
-            </div>
-            <div class="stat">
-              <h3>Mission</h3>
-              <div class="v" id="uiGoal">—</div>
-            </div>
-          </div>
-
-          <div class="hint">
-            Move with <span class="kbd">←</span><span class="kbd">→</span> or <span class="kbd">A</span><span class="kbd">D</span>.
-            Jump with <span class="kbd">Space</span>.
-            Dash with <span class="kbd">Shift</span>.
-            Collect relics, avoid drones, reach the gate.
-          </div>
-        </div>
-
-        <div class="tabs" role="tablist" aria-label="Info tabs">
-          <button class="tab active" data-tab="home" role="tab" aria-selected="true">Home</button>
-          <button class="tab" data-tab="levels" role="tab" aria-selected="false">Levels</button>
-          <button class="tab" data-tab="about" role="tab" aria-selected="false">About + SEO</button>
-        </div>
-
-        <section class="section active" id="tab-home" role="tabpanel">
-          <div class="about">
-            <h2>Enter the Neon Vault</h2>
-            <p>
-              You are a relic runner in a glowing city-ruin. Each level is a different “district”
-              with its own hazards. Grab the relics, dodge the drones, and unlock the next gate.
-            </p>
-
-            <!-- ✅ Internal links (SEO + navigation) -->
-            <p>
-              Jump straight to <a href="#game" id="linkGame">the game canvas</a>,
-              read <a href="#how" id="linkHow">how to play</a>,
-              or open the <a href="#about" id="linkAbout">About + SEO section</a>.
-            </p>
-          </div>
-        </section>
-
-        <section class="section" id="tab-levels" role="tabpanel">
-          <div class="about">
-            <h2>5 Levels (Increasing Intensity)</h2>
-            <ul>
-              <li><strong>Level 1: Glow Alley</strong> — Learn movement & collect 6 relics.</li>
-              <li><strong>Level 2: Pulse Platforms</strong> — Moving platforms + more drones (8 relics).</li>
-              <li><strong>Level 3: Laser Bazaar</strong> — Laser sweeps + tighter timing (10 relics).</li>
-              <li><strong>Level 4: Drift Tunnels</strong> — Wind drift + elite drones (12 relics).</li>
-              <li><strong>Level 5: The Vault Core</strong> — Final gauntlet + boss sentinel (14 relics).</li>
-            </ul>
-            <p class="small">Tip: Dash (Shift) gives a brief invulnerability window.</p>
-          </div>
-        </section>
-
-        <section class="section" id="tab-about" role="tabpanel">
-          <!-- ✅ On-page SEO content section -->
-          <div class="about" id="about">
-            <h2>About This Game</h2>
-            <p>
-              <strong>Neon Relic Runner</strong> is a lightweight HTML5 canvas game designed to be hosted on
-              GitHub Pages (github.io). Created by <strong>Mannu Mourya</strong>.
-            </p>
-
-            <div class="glowLine"></div>
-
-            <h2>On-page SEO Techniques Used (as requested)</h2>
-            <ul>
-              <li><strong>Title Tag:</strong> A descriptive, keyword-rich title is set in the page head.</li>
-              <li><strong>Meta Description:</strong> A clear summary is included to improve click-through from search results.</li>
-              <li><strong>Meta Keywords:</strong> Included for completeness (though search engines may not rely on it).</li>
-              <li><strong>Canonical URL:</strong> Added to reduce duplicate URL indexing issues (replace with your GitHub Pages URL).</li>
-              <li><strong>Header Tags (H1/H2):</strong> Structured headings organize content for users and crawlers.</li>
-              <li><strong>Image ALT Text:</strong> The logo includes alt text to improve accessibility and SEO signals.</li>
-              <li><strong>Internal Linking:</strong> Links connect sections (Home / How / About / Game) for better navigation and crawlability.</li>
-            </ul>
-
-            <div class="glowLine"></div>
-
-            <h2>What I Learned (Rephrased)</h2>
-            <ul>
-              <li>Learned how to update website source code to apply on-page SEO improvements.</li>
-              <li>Understood why title tags and meta descriptions are essential for search visibility.</li>
-              <li>Gained clarity on using header tags (H1, H2) to organize content effectively.</li>
-              <li>Learned how adding image ALT attributes supports accessibility and strengthens SEO.</li>
-              <li>Understood how internal linking improves crawlability and helps search engines index pages.</li>
-            </ul>
-          </div>
-        </section>
-
-        <div class="footerNote">
-          Hosting tip: put this file as <strong>index.html</strong> in your repo → enable GitHub Pages → open your github.io link.
-        </div>
+        <div class="pill">glassy • romantic • just us</div>
       </div>
-    </aside>
 
-    <main class="card" id="gameWrap">
-      <div class="gameTop">
-        <div class="mini">
-          <span class="pill">Status: <strong id="uiStatus">Ready</strong></span>
-          <span class="pill">District: <strong id="uiDistrict">—</strong></span>
-          <span class="pill">Best: <strong id="uiBest">—</strong></span>
+      <div id="stage">
+        <div class="storyBox">
+          <p id="storyText"></p>
         </div>
-        <div class="mini">
-          <span class="pill" id="how">Shortcut: <strong>H</strong> How</span>
-          <span class="pill">Pause: <strong>P</strong></span>
+        <div class="hintRow">
+          <span>✨ Soft hearts will twinkle…</span>
+          <span>🌸 And there’s one question at the end…</span>
         </div>
       </div>
 
-      <!-- ✅ Internal anchor target -->
-      <a id="game" aria-hidden="true"></a>
+      <div id="valentine">
+        <div class="question">Will you be my valentine 👉🏽👈🏽</div>
+        <div class="btnRow" id="btnArena">
+          <button id="yesBtn" type="button">Yes 💘</button>
+          <button id="noBtn" type="button">No 🙈</button>
+        </div>
 
-      <canvas id="c" width="1280" height="720" aria-label="Neon Relic Runner gameplay canvas"></canvas>
-
-      <div class="overlay" id="overlay">
-        <div class="modal" id="modal">
-          <h2 id="modalTitle">Welcome, Runner.</h2>
-          <p id="modalText">
-            The city is alive. Relics are scattered. Drones patrol. Collect enough relics to open the gate — then reach it.
+        <div class="success" id="success">
+          <h2>Yayyyy!! 💞</h2>
+          <p>
+            You just made my whole world brighter.<br/>
+            I love you, Laddu. Always. 🌸
           </p>
-          <div class="glowLine"></div>
-          <div class="row">
-            <button class="btn btnPrimary" id="modalStart">▶ Start Level 1</button>
-            <button class="btn" id="modalHow">⌨ How to Play</button>
-            <button class="btn" id="modalClose">✕ Close</button>
-          </div>
-          <div class="small" id="modalSmall">
-            Pro-tip: Dash (Shift) briefly makes you untouchable. Use it smartly.
-          </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="touch" aria-label="Touch controls">
-        <div class="tbtn" id="tLeft">◀ Left</div>
-        <div class="tbtn" id="tJump">⤒ Jump</div>
-        <div class="tbtn" id="tRight">Right ▶</div>
-        <div class="tbtn" id="tDash">⚡ Dash</div>
+  <!-- Password gate -->
+  <div class="lockOverlay" id="lock">
+    <div class="lockCard">
+      <h1 class="lockTitle">Tell me laddu what's the password</h1>
+      <p class="lockHint">
+        Hint: date and month when it all started — format like <b>01JAN</b>
+      </p>
+
+      <div class="lockRow">
+        <input id="pwd" placeholder="_____" inputmode="text" autocomplete="off" maxlength="5" />
+        <button class="smallBtn" id="unlockBtn" type="button">Unlock ❤️</button>
       </div>
-    </main>
+      <div class="error" id="err">Close… but not this one 😌 Try again, laddu.</div>
+    </div>
   </div>
 
   <script>
-    /******************************************************************
-     * Neon Relic Runner
-     * - Single-file GitHub Pages game
-     * - 5 levels with escalating hazards + a final boss sentinel
-     * - Smooth neon graphics using canvas + particle effects
-     ******************************************************************/
+    /********************
+     * Tiny twinkling hearts (elegant, not frequent)
+     ********************/
+    const heartsLayer = document.getElementById("heartsLayer");
+    const heartChars = ["❤","💗","💓","💖","💕"];
 
-    // ---------- Helpers ----------
-    const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-    const lerp = (a, b, t) => a + (b - a) * t;
-    const rand = (a, b) => a + Math.random() * (b - a);
-    const now = () => performance.now();
+    function spawnHeart({burst=false} = {}){
+      const h = document.createElement("div");
+      h.className = "heart";
+      h.textContent = heartChars[(Math.random()*heartChars.length)|0];
 
-    // ---------- DOM ----------
-    const canvas = document.getElementById("c");
-    const ctx = canvas.getContext("2d");
+      // Position anywhere, but keep it tasteful
+      const x = Math.random()*100;
+      const y = Math.random()*100;
 
-    const uiLevel = document.getElementById("uiLevel");
-    const uiRelics = document.getElementById("uiRelics");
-    const uiLives = document.getElementById("uiLives");
-    const uiGoal = document.getElementById("uiGoal");
-    const uiStatus = document.getElementById("uiStatus");
-    const uiDistrict = document.getElementById("uiDistrict");
-    const uiBest = document.getElementById("uiBest");
+      // Subtle motion
+      const dx = (Math.random()*40 - 20).toFixed(1) + "px";
+      const dy = (Math.random()*70 + 30).toFixed(1) + "px";
+      const dur = (Math.random()*1200 + (burst ? 900 : 1400)).toFixed(0) + "ms";
+      const op = (burst ? (Math.random()*0.35 + 0.30) : (Math.random()*0.18 + 0.10)).toFixed(2);
 
-    const overlay = document.getElementById("overlay");
-    const modal = document.getElementById("modal");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalText = document.getElementById("modalText");
-    const modalSmall = document.getElementById("modalSmall");
+      const size = burst ? (Math.random()*14 + 12) : (Math.random()*9 + 10);
 
-    // Buttons
-    const btnStart = document.getElementById("btnStart");
-    const btnContinue = document.getElementById("btnContinue");
-    const btnHow = document.getElementById("btnHow");
-    const btnSound = document.getElementById("btnSound");
-    const btnReset = document.getElementById("btnReset");
+      h.style.left = x + "vw";
+      h.style.top  = y + "vh";
+      h.style.fontSize = size + "px";
+      h.style.setProperty("--dx", dx);
+      h.style.setProperty("--dy", dy);
+      h.style.setProperty("--dur", dur);
+      h.style.setProperty("--op", op);
 
-    const modalStart = document.getElementById("modalStart");
-    const modalHow = document.getElementById("modalHow");
-    const modalClose = document.getElementById("modalClose");
-
-    // Tabs
-    const tabs = [...document.querySelectorAll(".tab")];
-    const sections = {
-      home: document.getElementById("tab-home"),
-      levels: document.getElementById("tab-levels"),
-      about: document.getElementById("tab-about")
-    };
-
-    function setTab(name){
-      tabs.forEach(t => t.classList.toggle("active", t.dataset.tab === name));
-      Object.entries(sections).forEach(([k, el]) => el.classList.toggle("active", k === name));
-      // internal link "feel" (SEO-friendly navigation)
-      if(name === "about") location.hash = "#about";
-      if(name === "home") location.hash = "#";
-      if(name === "levels") location.hash = "#";
-    }
-    tabs.forEach(t => t.addEventListener("click", () => setTab(t.dataset.tab)));
-
-    // Internal link clicks
-    document.getElementById("linkGame").addEventListener("click", (e)=>{ e.preventDefault(); location.hash="#game"; });
-    document.getElementById("linkHow").addEventListener("click", (e)=>{ e.preventDefault(); showHow(); });
-    document.getElementById("linkAbout").addEventListener("click", (e)=>{ e.preventDefault(); setTab("about"); });
-
-    // ---------- Sound (WebAudio, optional) ----------
-    let audioOn = true;
-    let AC = null, master = null;
-
-    function ensureAudio(){
-      if(AC) return;
-      AC = new (window.AudioContext || window.webkitAudioContext)();
-      master = AC.createGain();
-      master.gain.value = 0.12;
-      master.connect(AC.destination);
-    }
-    function beep(freq=440, dur=0.08, type="sine", gain=0.7){
-      if(!audioOn) return;
-      ensureAudio();
-      const o = AC.createOscillator();
-      const g = AC.createGain();
-      o.type = type;
-      o.frequency.value = freq;
-      g.gain.value = 0.0001;
-      o.connect(g); g.connect(master);
-      const t = AC.currentTime;
-      g.gain.setValueAtTime(0.0001, t);
-      g.gain.exponentialRampToValueAtTime(gain, t + 0.01);
-      g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
-      o.start(t);
-      o.stop(t + dur + 0.02);
-    }
-    function chord(){
-      beep(392, 0.10, "triangle", 0.55);
-      setTimeout(()=>beep(523.25, 0.10, "triangle", 0.55), 30);
-      setTimeout(()=>beep(659.25, 0.10, "triangle", 0.55), 60);
+      heartsLayer.appendChild(h);
+      setTimeout(()=> h.remove(), parseInt(dur) + 200);
     }
 
-    // ---------- Persistent progress ----------
-    const LS_KEY = "nrr_progress_v1";
-    const defaultProgress = { unlocked: 1, best: 0, lastLevel: 1 };
-    function loadProgress(){
-      try{
-        const d = JSON.parse(localStorage.getItem(LS_KEY) || "null");
-        return d ? { ...defaultProgress, ...d } : { ...defaultProgress };
-      }catch{
-        return { ...defaultProgress };
+    function heartsLoop(){
+      // Low frequency, random jitter between spawns
+      const next = Math.random()*1600 + 900; // 0.9s - 2.5s (elegant)
+      spawnHeart();
+      setTimeout(heartsLoop, next);
+    }
+    setTimeout(heartsLoop, 700);
+
+    function heartBurst(count=40){
+      for(let i=0;i<count;i++){
+        setTimeout(()=>spawnHeart({burst:true}), Math.random()*650);
       }
     }
-    function saveProgress(){
-      localStorage.setItem(LS_KEY, JSON.stringify(progress));
+
+    /********************
+     * Password Gate
+     ********************/
+    const lock = document.getElementById("lock");
+    const pwd = document.getElementById("pwd");
+    const unlockBtn = document.getElementById("unlockBtn");
+    const err = document.getElementById("err");
+
+    const PASSWORD = "25SEP";
+
+    function tryUnlock(){
+      const val = (pwd.value || "").trim().toUpperCase();
+      if(val === PASSWORD){
+        err.style.display = "none";
+        document.body.classList.remove("locked");
+        lock.style.transition = "opacity 700ms ease, transform 700ms ease";
+        lock.style.opacity = "0";
+        lock.style.transform = "scale(1.02)";
+        setTimeout(()=> lock.remove(), 740);
+        startStory();
+      }else{
+        err.style.display = "block";
+        // Cute shake
+        const card = lock.querySelector(".lockCard");
+        card.animate([
+          { transform: "translateX(0)" },
+          { transform: "translateX(-8px)" },
+          { transform: "translateX(8px)" },
+          { transform: "translateX(-5px)" },
+          { transform: "translateX(5px)" },
+          { transform: "translateX(0)" },
+        ], { duration: 420, easing: "ease-out" });
+      }
     }
-    let progress = loadProgress();
-    uiBest.textContent = progress.best ? `${progress.best} pts` : "—";
 
-    // ---------- Game State ----------
-    const W = 1280, H = 720; // internal resolution
-    function fitCanvas(){
-      // keep fixed internal pixels; CSS scales it nicely
-      canvas.width = W;
-      canvas.height = H;
-    }
-    fitCanvas();
+    unlockBtn.addEventListener("click", tryUnlock);
+    pwd.addEventListener("keydown", (e)=>{
+      if(e.key === "Enter") tryUnlock();
+    });
 
-    const keys = {
-      left:false, right:false, jump:false, dash:false,
-      pause:false
-    };
+    // Auto focus
+    setTimeout(()=>pwd.focus(), 300);
 
-    let paused = false;
-    let running = false;
-    let dt = 0;
-    let lastT = now();
+    /********************
+     * Story mode (typewriter)
+     ********************/
+    const storyText = document.getElementById("storyText");
+    const valentine = document.getElementById("valentine");
 
-    const world = {
-      level: 1,
-      districtName: "",
-      goalRelics: 6,
-      relics: 0,
-      lives: 3,
-      score: 0,
-      time: 0,
-      gateOpen: false,
-      win: false,
-      lose: false
-    };
-
-    // ---------- Levels ----------
-    const LEVELS = [
-      { name:"Glow Alley", goal:6, drones:2, lasers:0, wind:0.0, platforms:0, boss:false },
-      { name:"Pulse Platforms", goal:8, drones:3, lasers:0, wind:0.0, platforms:2, boss:false },
-      { name:"Laser Bazaar", goal:10, drones:3, lasers:2, wind:0.0, platforms:2, boss:false },
-      { name:"Drift Tunnels", goal:12, drones:4, lasers:2, wind:0.35, platforms:3, boss:false },
-      { name:"Vault Core", goal:14, drones:4, lasers:3, wind:0.20, platforms:3, boss:true }
+    const STORY = [
+      "Laddu i love you i love you since we were kids…\n\n",
+      "you are my first love my first crush.\n\n",
+      "I use to look at you in class whole day…\n",
+      "i always thought why a cute girl like you will date me…\n",
+      "but here we are…\n\n",
+      "you know your smile… i loved it always always always…\n\n",
+      "Remember we were running in the corridor of our school on teachers days…\n",
+      "Remember we talked… that is one of my school memories.\n\n",
+      "The day we meet after confessing the love for each other…\n",
+      "i was mesmerized when I saw you that day on station…\n",
+      "your hair your smile everything was so perfect.\n\n",
+      "So i was to ask you once again…\n"
     ];
 
-    // ---------- Entities ----------
-    const player = {
-      x: 140, y: 520,
-      vx: 0, vy: 0,
-      w: 34, h: 44,
-      onGround: false,
-      dashT: 0,
-      invulnT: 0,
-      trail: []
-    };
+    function typeLines(lines, onDone){
+      storyText.textContent = "";
+      const cursor = document.createElement("span");
+      cursor.className = "cursor";
 
-    let platforms = [];
-    let relics = [];
-    let drones = [];
-    let lasers = [];
-    let particles = [];
-    let boss = null;
+      let li = 0, ci = 0;
+      let current = "";
 
-    // ---------- Visual palette ----------
-    function glowRect(x,y,w,h, color, blur=18, alpha=1){
-      ctx.save();
-      ctx.globalAlpha = alpha;
-      ctx.shadowColor = color;
-      ctx.shadowBlur = blur;
-      ctx.fillStyle = color;
-      ctx.fillRect(x,y,w,h);
-      ctx.restore();
+      function tick(){
+        if(li >= lines.length){
+          cursor.remove();
+          onDone?.();
+          return;
+        }
+
+        const line = lines[li];
+        // Slightly varied pacing feels sweet
+        const baseDelay = 16 + Math.random()*22;
+
+        current += line[ci];
+        storyText.textContent = current;
+        storyText.appendChild(cursor);
+
+        ci++;
+
+        if(ci >= line.length){
+          li++;
+          ci = 0;
+          // gentle pause between chunks
+          setTimeout(tick, 450 + Math.random()*250);
+        }else{
+          setTimeout(tick, baseDelay);
+        }
+      }
+      tick();
     }
 
-    function drawTextGlow(text, x, y, size=28, color="rgba(100,246,255,.95)", align="left"){
-      ctx.save();
-      ctx.font = `900 ${size}px ui-sans-serif, system-ui`;
-      ctx.textAlign = align;
-      ctx.fillStyle = "rgba(255,255,255,.90)";
-      ctx.shadowColor = color;
-      ctx.shadowBlur = 22;
-      ctx.fillText(text, x, y);
-      ctx.restore();
-    }
-
-    // ---------- Build level ----------
-    function resetWorldForLevel(n){
-      const cfg = LEVELS[n-1];
-      world.level = n;
-      world.districtName = cfg.name;
-      world.goalRelics = cfg.goal;
-      world.relics = 0;
-      world.gateOpen = false;
-      world.win = false;
-      world.lose = false;
-      world.time = 0;
-      world.score = 0;
-
-      uiLevel.textContent = String(world.level);
-      uiDistrict.textContent = world.districtName;
-      uiRelics.textContent = "0";
-      uiGoal.textContent = `${world.goalRelics}`;
-      uiStatus.textContent = "Running";
-      uiLives.textContent = String(world.lives);
-
-      // Reset player
-      player.x = 140; player.y = 520;
-      player.vx = 0; player.vy = 0;
-      player.onGround = false;
-      player.dashT = 0;
-      player.invulnT = 0;
-      player.trail.length = 0;
-
-      // Ground + base platforms
-      platforms = [
-        {x:0, y: 600, w: W, h: 120, glow:"rgba(100,246,255,.18)", solid:true}
-      ];
-
-      // Add floating platforms
-      const pCount = cfg.platforms;
-      for(let i=0;i<pCount;i++){
-        const px = 320 + i*300;
-        const py = 420 - i*25;
-        platforms.push({
-          x:px, y:py,
-          w: 160, h: 18,
-          glow:"rgba(255,85,229,.22)",
-          solid:true,
-          move: (i%2===0),
-          baseX:px,
-          t: rand(0, 999),
-          amp: 60 + i*12,
-          spd: 0.9 + i*0.15
-        });
-      }
-
-      // Relics
-      relics = [];
-      const total = cfg.goal + 4; // some extras for score
-      for(let i=0;i<total;i++){
-        relics.push({
-          x: rand(220, W-220),
-          y: rand(190, 520),
-          r: 10,
-          got:false,
-          phase: rand(0, Math.PI*2)
-        });
-      }
-
-      // Drones
-      drones = [];
-      for(let i=0;i<cfg.drones;i++){
-        drones.push({
-          x: rand(420, W-200),
-          y: rand(220, 520),
-          r: 14,
-          vx: rand(80, 140) * (Math.random()<.5?-1:1),
-          vy: rand(40, 90) * (Math.random()<.5?-1:1),
-          t: rand(0, 999),
-          kind: i===cfg.drones-1 && n>=4 ? "elite" : "normal"
-        });
-      }
-
-      // Lasers (sweeping lines)
-      lasers = [];
-      for(let i=0;i<cfg.lasers;i++){
-        lasers.push({
-          y: 260 + i*110 + rand(-20, 20),
-          w: rand(220, 520),
-          x: rand(200, W-600),
-          phase: rand(0, Math.PI*2),
-          spd: 0.6 + i*0.18,
-          active: true
-        });
-      }
-
-      // Boss (level 5)
-      boss = null;
-      if(cfg.boss){
-        boss = {
-          x: W - 210,
-          y: 420,
-          r: 44,
-          hp: 3,
-          phase: 0,
-          wake: false,
-          shotT: 0,
-          orbs: []
-        };
-      }
-
-      particles = [];
-    }
-
-    function openGate(){
-      world.gateOpen = true;
-      chord();
-      for(let i=0;i<120;i++){
-        particles.push({
-          x: W-130, y: 520,
-          vx: rand(-200, 50),
-          vy: rand(-260, 80),
-          life: rand(0.6, 1.3),
-          t: 0,
-          s: rand(2, 5),
-          col: Math.random()<.5 ? "rgba(100,246,255,.95)" : "rgba(255,85,229,.90)"
-        });
-      }
-    }
-
-    // ---------- Collisions ----------
-    function aabb(ax,ay,aw,ah, bx,by,bw,bh){
-      return ax < bx+bw && ax+aw > bx && ay < by+bh && ay+ah > by;
-    }
-
-    function hitPlayer(){
-      if(player.invulnT > 0) return;
-      world.lives -= 1;
-      uiLives.textContent = String(world.lives);
-      player.invulnT = 1.1; // seconds
-      player.vx *= -0.4;
-      player.vy = -260;
-      beep(180, 0.14, "sawtooth", 0.7);
-
-      for(let i=0;i<40;i++){
-        particles.push({
-          x: player.x + player.w/2, y: player.y + player.h/2,
-          vx: rand(-220, 220),
-          vy: rand(-260, 120),
-          life: rand(0.35, 0.8),
-          t: 0,
-          s: rand(1.5, 4),
-          col: "rgba(255,75,92,.95)"
-        });
-      }
-
-      if(world.lives <= 0){
-        world.lose = true;
-        running = false;
-        uiStatus.textContent = "Defeated";
-        showModal(
-          "The city pushed back.",
-          "Your run ended — but your relic map is still glowing. Try again and beat your best score.",
-          "Tip: Dash through danger. Shift = invulnerability for a moment.",
-          [
-            {label:"↺ Retry Level", action: ()=> startLevel(world.level)},
-            {label:"🏠 Home", action: ()=> showHome()}
-          ]
+    function startStory(){
+      typeLines(STORY, ()=>{
+        // reveal valentine prompt softly
+        valentine.style.display = "grid";
+        valentine.animate(
+          [{ opacity:0, transform:"translateY(10px)" }, { opacity:1, transform:"translateY(0)" }],
+          { duration: 850, easing:"cubic-bezier(.2,.85,.15,1)" }
         );
-      }
-    }
-
-    // ---------- Modal ----------
-    function showModal(title, text, small, actions){
-      modalTitle.textContent = title;
-      modalText.textContent = text;
-      modalSmall.textContent = small || "";
-      overlay.style.display = "grid";
-
-      // rebuild action buttons
-      const row = modal.querySelector(".row");
-      row.innerHTML = "";
-      (actions || []).forEach(a=>{
-        const b = document.createElement("button");
-        b.className = "btn" + (a.primary ? " btnPrimary" : "");
-        b.textContent = a.label;
-        b.addEventListener("click", a.action);
-        row.appendChild(b);
       });
-
-      // also allow close via overlay button if desired
-    }
-    function hideModal(){
-      overlay.style.display = "none";
     }
 
-    function showHome(){
-      running = false;
-      paused = false;
-      uiStatus.textContent = "Ready";
-      showModal(
-        "Welcome, Runner.",
-        "Collect relics to open the gate. Reach the gate to advance. 5 levels await — each more intense than the last.",
-        "Pro-tip: Dash (Shift) briefly makes you untouchable.",
-        [
-          {label:"▶ Start Level 1", action: ()=> startLevel(1), primary:true},
-          {label:"⏩ Continue", action: ()=> startLevel(progress.lastLevel)},
-          {label:"⌨ How to Play", action: ()=> showHow()}
-        ]
-      );
+    /********************
+     * Playful NO button that can't be clicked 😄
+     ********************/
+    const btnArena = document.getElementById("btnArena");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn  = document.getElementById("noBtn");
+    const success = document.getElementById("success");
+
+    // initial position for NO
+    function placeNoInitial(){
+      const rect = btnArena.getBoundingClientRect();
+      noBtn.style.left = (rect.width/2 + 60) + "px";
+      noBtn.style.top  = "50%";
+      noBtn.style.transform = "translate(-50%, -50%)";
     }
-
-    function showHow(){
-      running = false;
-      paused = false;
-      showModal(
-        "How to Play",
-        "Move Left/Right, Jump, and Dash. Collect enough relics to open the gate, then reach it. Avoid drones and lasers. Level 5 has a Sentinel—open the gate to awaken it, then survive its phase and reach the exit.",
-        "Controls: ←/→ or A/D • Jump: Space • Dash: Shift • Pause: P",
-        [
-          {label:"▶ Start", action: ()=> startLevel(progress.lastLevel), primary:true},
-          {label:"✕ Close", action: ()=> hideModal()}
-        ]
-      );
-    }
-
-    // ---------- Start / Continue ----------
-    function startLevel(n){
-      hideModal();
-      const cfg = LEVELS[n-1];
-      if(!cfg) n = 1;
-
-      // unlock check
-      if(n > progress.unlocked) n = progress.unlocked;
-
-      resetWorldForLevel(n);
-      running = true;
-      paused = false;
-      lastT = now();
-      uiStatus.textContent = "Running";
-      progress.lastLevel = n;
-      saveProgress();
-      beep(520, 0.08, "triangle", 0.6);
-    }
-
-    function resetAll(){
-      progress = { ...defaultProgress };
-      saveProgress();
-      world.lives = 3;
-      uiBest.textContent = "—";
-      showHome();
-    }
-
-    // ---------- Input ----------
-    window.addEventListener("keydown", (e)=>{
-      if(e.code==="ArrowLeft" || e.code==="KeyA") keys.left = true;
-      if(e.code==="ArrowRight" || e.code==="KeyD") keys.right = true;
-      if(e.code==="Space") keys.jump = true;
-      if(e.code==="ShiftLeft" || e.code==="ShiftRight") keys.dash = true;
-
-      if(e.code==="KeyP"){
-        paused = !paused;
-        uiStatus.textContent = paused ? "Paused" : (running ? "Running" : uiStatus.textContent);
-        beep(paused ? 260 : 520, 0.06, "square", 0.5);
-      }
-      if(e.code==="KeyH") showHow();
-    });
-    window.addEventListener("keyup", (e)=>{
-      if(e.code==="ArrowLeft" || e.code==="KeyA") keys.left = false;
-      if(e.code==="ArrowRight" || e.code==="KeyD") keys.right = false;
-      if(e.code==="Space") keys.jump = false;
-      if(e.code==="ShiftLeft" || e.code==="ShiftRight") keys.dash = false;
-    });
-
-    // Touch controls
-    function touchBind(id, onDown, onUp){
-      const el = document.getElementById(id);
-      let down = false;
-      const start = (e)=>{ e.preventDefault(); down=true; onDown(); };
-      const end = (e)=>{ e.preventDefault(); if(!down) return; down=false; onUp && onUp(); };
-      el.addEventListener("touchstart", start, {passive:false});
-      el.addEventListener("touchend", end, {passive:false});
-      el.addEventListener("mousedown", start);
-      window.addEventListener("mouseup", end);
-    }
-    touchBind("tLeft", ()=> keys.left=true, ()=> keys.left=false);
-    touchBind("tRight", ()=> keys.right=true, ()=> keys.right=false);
-    touchBind("tJump", ()=> keys.jump=true, ()=> keys.jump=false);
-    touchBind("tDash", ()=> keys.dash=true, ()=> keys.dash=false);
-
-    // ---------- Gameplay update ----------
-    function update(dt){
-      const cfg = LEVELS[world.level-1];
-      world.time += dt;
-
-      // moving platforms
-      for(const p of platforms){
-        if(p.move){
-          p.t += dt * p.spd;
-          p.x = p.baseX + Math.sin(p.t) * p.amp;
-        }
-      }
-
-      // wind drift (later levels)
-      const wind = cfg.wind || 0;
-
-      // Player movement
-      const accel = 1450;
-      const maxSpd = 330;
-      const friction = player.onGround ? 0.86 : 0.95;
-      if(keys.left) player.vx -= accel*dt;
-      if(keys.right) player.vx += accel*dt;
-      player.vx += wind * 200 * dt;
-      player.vx = clamp(player.vx, -maxSpd, maxSpd);
-      player.vx *= friction;
-
-      // jump
-      if(keys.jump && player.onGround){
-        player.vy = -520;
-        player.onGround = false;
-        beep(680, 0.06, "triangle", 0.55);
-        // jump particles
-        for(let i=0;i<18;i++){
-          particles.push({
-            x: player.x + player.w/2,
-            y: player.y + player.h,
-            vx: rand(-120, 120),
-            vy: rand(-60, 30),
-            life: rand(0.25, 0.55),
-            t: 0,
-            s: rand(1.5, 3.2),
-            col: "rgba(100,246,255,.85)"
-          });
-        }
-      }
-
-      // dash (invulnerability)
-      if(keys.dash && player.dashT <= 0){
-        player.dashT = 0.18;
-        player.invulnT = Math.max(player.invulnT, 0.22);
-        const dir = (keys.left && !keys.right) ? -1 : (keys.right && !keys.left) ? 1 : (player.vx>=0?1:-1);
-        player.vx = dir * 720;
-        beep(980, 0.05, "square", 0.45);
-        for(let i=0;i<22;i++){
-          particles.push({
-            x: player.x + player.w/2,
-            y: player.y + player.h/2,
-            vx: rand(-160, 160) - dir*240,
-            vy: rand(-120, 120),
-            life: rand(0.18, 0.4),
-            t: 0,
-            s: rand(1.2, 3.0),
-            col: "rgba(255,85,229,.90)"
-          });
-        }
-      }
-
-      // timers
-      player.dashT = Math.max(0, player.dashT - dt);
-      player.invulnT = Math.max(0, player.invulnT - dt);
-
-      // gravity
-      player.vy += 1280 * dt;
-      player.vy = Math.min(player.vy, 1100);
-
-      // move
-      player.x += player.vx * dt;
-      player.y += player.vy * dt;
-
-      // bounds
-      player.x = clamp(player.x, 0, W - player.w);
-
-      // collisions with platforms
-      player.onGround = false;
-      for(const p of platforms){
-        if(!p.solid) continue;
-        if(aabb(player.x, player.y, player.w, player.h, p.x, p.y, p.w, p.h)){
-          // from top
-          const prevY = player.y - player.vy*dt;
-          if(prevY + player.h <= p.y + 10){
-            player.y = p.y - player.h;
-            player.vy = 0;
-            player.onGround = true;
-          }else{
-            // side / bottom simple resolution
-            if(player.x + player.w/2 < p.x + p.w/2){
-              player.x = p.x - player.w - 0.1;
-            }else{
-              player.x = p.x + p.w + 0.1;
-            }
-            player.vx *= -0.2;
-          }
-        }
-      }
-
-      // fall out
-      if(player.y > H + 120){
-        hitPlayer();
-        player.y = 520;
-        player.vy = -180;
-      }
-
-      // relic pickup
-      for(const r of relics){
-        if(r.got) continue;
-        const rx = r.x, ry = r.y + Math.sin(world.time*2 + r.phase) * 6;
-        const dx = (player.x + player.w/2) - rx;
-        const dy = (player.y + player.h/2) - ry;
-        if(dx*dx + dy*dy < (r.r + 22)*(r.r + 22)){
-          r.got = true;
-          world.relics += 1;
-          world.score += 100;
-          uiRelics.textContent = String(world.relics);
-          beep(880, 0.06, "triangle", 0.55);
-
-          for(let i=0;i<26;i++){
-            particles.push({
-              x: rx, y: ry,
-              vx: rand(-210, 210),
-              vy: rand(-240, 120),
-              life: rand(0.25, 0.7),
-              t: 0,
-              s: rand(1.5, 4.0),
-              col: Math.random()<.6 ? "rgba(255,211,106,.95)" : "rgba(100,246,255,.90)"
-            });
-          }
-        }
-      }
-
-      // open gate condition
-      if(!world.gateOpen && world.relics >= world.goalRelics){
-        openGate();
-      }
-
-      // drones
-      for(const d of drones){
-        d.t += dt;
-        const spMul = (d.kind==="elite") ? 1.20 : 1.0;
-        d.x += d.vx * dt * spMul;
-        d.y += d.vy * dt * spMul;
-
-        // bounce
-        if(d.x < 80 || d.x > W-80) d.vx *= -1;
-        if(d.y < 170 || d.y > 570) d.vy *= -1;
-
-        // gentle orbit wobble
-        d.x += Math.sin(d.t*2.0) * 12 * dt;
-        d.y += Math.cos(d.t*2.4) * 12 * dt;
-
-        // collision with player
-        const dx = (player.x + player.w/2) - d.x;
-        const dy = (player.y + player.h/2) - d.y;
-        const rr = (d.r + 18);
-        if(dx*dx + dy*dy < rr*rr){
-          hitPlayer();
-        }
-      }
-
-      // lasers
-      for(const L of lasers){
-        L.phase += dt * L.spd;
-        const t = (Math.sin(L.phase) + 1)/2; // 0..1
-        L.x = lerp(140, W - 140 - L.w, t);
-        // laser "hit" band
-        const band = 10;
-        if(player.y + player.h > L.y - band && player.y < L.y + band){
-          // if player x overlaps laser segment
-          if(player.x + player.w > L.x && player.x < L.x + L.w){
-            hitPlayer();
-          }
-        }
-      }
-
-      // gate zone (right side)
-      const gateX = W - 120;
-      const gateY = 520;
-      const gateW = 60, gateH = 80;
-
-      // boss behavior (level 5)
-      if(boss){
-        // wake when gate opens
-        if(world.gateOpen) boss.wake = true;
-
-        boss.phase += dt;
-        boss.y = 400 + Math.sin(boss.phase*1.4) * 40;
-
-        if(boss.wake){
-          // orbit the gate region
-          boss.x = lerp(boss.x, W - 220 + Math.sin(boss.phase*0.9)*60, 0.04);
-
-          // shoot orbs
-          boss.shotT -= dt;
-          if(boss.shotT <= 0){
-            boss.shotT = 1.0 - clamp(world.time/60, 0, 0.35); // slightly faster over time
-            const angle = Math.atan2((player.y+player.h/2) - boss.y, (player.x+player.w/2) - boss.x);
-            const sp = 260 + rand(-30, 60);
-            boss.orbs.push({
-              x: boss.x, y: boss.y,
-              vx: Math.cos(angle)*sp,
-              vy: Math.sin(angle)*sp,
-              r: 10,
-              life: 3.2
-            });
-            beep(220, 0.08, "sawtooth", 0.4);
-          }
-
-          // update orbs
-          boss.orbs = boss.orbs.filter(o => (o.life -= dt) > 0);
-          for(const o of boss.orbs){
-            o.x += o.vx*dt;
-            o.y += o.vy*dt;
-
-            // collide with player
-            const dx = (player.x + player.w/2) - o.x;
-            const dy = (player.y + player.h/2) - o.y;
-            const rr = (o.r + 18);
-            if(dx*dx + dy*dy < rr*rr){
-              hitPlayer();
-              o.life = 0;
-            }
-          }
-
-          // "damage" boss by dashing through it (fun mechanic)
-          const dx = (player.x + player.w/2) - boss.x;
-          const dy = (player.y + player.h/2) - boss.y;
-          if(dx*dx + dy*dy < (boss.r + 16)*(boss.r + 16)){
-            if(player.dashT > 0.02){
-              boss.hp -= 1;
-              world.score += 250;
-              beep(140, 0.12, "square", 0.6);
-              for(let i=0;i<70;i++){
-                particles.push({
-                  x: boss.x, y: boss.y,
-                  vx: rand(-260, 260),
-                  vy: rand(-260, 260),
-                  life: rand(0.25, 0.9),
-                  t: 0,
-                  s: rand(2.0, 5.0),
-                  col: Math.random()<.5 ? "rgba(100,246,255,.95)" : "rgba(255,85,229,.90)"
-                });
-              }
-              // knockback
-              player.vx *= -0.35;
-              player.vy = -340;
-
-              if(boss.hp <= 0){
-                // boss collapses -> gate becomes "safe"
-                boss.wake = false;
-                boss.orbs.length = 0;
-                world.score += 700;
-                chord();
-                for(let i=0;i<180;i++){
-                  particles.push({
-                    x: boss.x, y: boss.y,
-                    vx: rand(-360, 360),
-                    vy: rand(-360, 360),
-                    life: rand(0.3, 1.4),
-                    t: 0,
-                    s: rand(2.5, 6.0),
-                    col: "rgba(255,211,106,.95)"
-                  });
-                }
-                boss = null; // defeated
-              }
-            }else{
-              hitPlayer();
-            }
-          }
-        }
-      }
-
-      // Win condition: reach gate when open
-      if(world.gateOpen && aabb(player.x, player.y, player.w, player.h, gateX, gateY, gateW, gateH)){
-        world.win = true;
-        running = false;
-        uiStatus.textContent = "Cleared";
-        world.score += 500;
-
-        // progress unlock
-        if(world.level === progress.unlocked && progress.unlocked < 5){
-          progress.unlocked += 1;
-        }
-        progress.lastLevel = Math.min(5, world.level + 1);
-
-        // best score
-        if(world.score > progress.best) progress.best = world.score;
-        uiBest.textContent = progress.best ? `${progress.best} pts` : "—";
-        saveProgress();
-
-        chord();
-
-        // victory modal
-        const nextLabel = (world.level < 5) ? `▶ Start Level ${world.level+1}` : "🏁 Victory Screen";
-        showModal(
-          world.level < 5 ? "Gate unlocked. District cleared." : "THE VAULT IS YOURS.",
-          world.level < 5
-            ? `You cleared ${cfg.name}. The next district is now unlocked.`
-            : "You completed all 5 levels. The city remembers your name.",
-          `Score: ${world.score} pts • Relics: ${world.relics}/${world.goalRelics}`,
-          [
-            world.level < 5
-              ? {label: nextLabel, action: ()=> startLevel(world.level+1), primary:true}
-              : {label: "🎉 Play Again (Level 1)", action: ()=> startLevel(1), primary:true},
-            {label:"⏩ Continue", action: ()=> startLevel(progress.lastLevel)},
-            {label:"🏠 Home", action: ()=> showHome()}
-          ]
-        );
-      }
-
-      // particles
-      particles = particles.filter(p => (p.t += dt) < p.life);
-      for(const p of particles){
-        p.x += p.vx*dt;
-        p.y += p.vy*dt;
-        p.vx *= (1 - dt*0.6);
-        p.vy += 680*dt; // gravity
-      }
-
-      // player trail
-      player.trail.unshift({x: player.x + player.w/2, y: player.y + player.h/2, t: 0});
-      if(player.trail.length > 18) player.trail.pop();
-      player.trail.forEach(pt => pt.t += dt);
-
-      // passive score
-      world.score += dt * 12;
-    }
-
-    // ---------- Render ----------
-    function draw(){
-      // background ambiance
-      ctx.clearRect(0,0,W,H);
-
-      // stars/particles "fog"
-      const t = world.time;
-      for(let i=0;i<70;i++){
-        const sx = (i*179 + (t*40)) % W;
-        const sy = (i*97 + (t*18)) % H;
-        ctx.fillStyle = `rgba(255,255,255,${0.03 + (i%7)*0.004})`;
-        ctx.fillRect(sx, sy, 2, 2);
-      }
-
-      // neon city silhouettes
-      ctx.save();
-      ctx.globalAlpha = 0.18;
-      for(let i=0;i<8;i++){
-        const bx = i*170 + Math.sin(t*0.2+i)*10;
-        const bw = 120 + (i%3)*40;
-        const bh = 220 + (i%5)*55;
-        const by = 600 - bh;
-        ctx.fillStyle = i%2 ? "rgba(100,246,255,.30)" : "rgba(255,85,229,.26)";
-        ctx.fillRect(bx, by, bw, bh);
-      }
-      ctx.restore();
-
-      // platforms
-      for(const p of platforms){
-        glowRect(p.x, p.y, p.w, p.h, p.glow, 18, 0.55);
-        ctx.fillStyle = "rgba(255,255,255,.08)";
-        ctx.fillRect(p.x, p.y, p.w, p.h);
-        ctx.strokeStyle = "rgba(255,255,255,.12)";
-        ctx.strokeRect(p.x+0.5, p.y+0.5, p.w-1, p.h-1);
-      }
-
-      // lasers
-      for(const L of lasers){
-        // base glow
-        ctx.save();
-        ctx.globalAlpha = 0.9;
-        ctx.shadowBlur = 28;
-        ctx.shadowColor = "rgba(255,75,92,.85)";
-        ctx.fillStyle = "rgba(255,75,92,.45)";
-        ctx.fillRect(L.x, L.y-2, L.w, 4);
-        ctx.restore();
-
-        // core
-        ctx.fillStyle = "rgba(255,255,255,.75)";
-        ctx.fillRect(L.x, L.y-1, L.w, 2);
-      }
-
-      // relics
-      for(const r of relics){
-        if(r.got) continue;
-        const ry = r.y + Math.sin(t*2 + r.phase) * 6;
-        ctx.save();
-        ctx.translate(r.x, ry);
-        ctx.rotate(Math.sin(t + r.phase)*0.6);
-
-        // outer glow
-        ctx.shadowBlur = 28;
-        ctx.shadowColor = "rgba(255,211,106,.85)";
-        ctx.fillStyle = "rgba(255,211,106,.45)";
-        ctx.beginPath();
-        ctx.arc(0,0, r.r+4, 0, Math.PI*2);
-        ctx.fill();
-
-        // inner gem
-        ctx.shadowBlur = 18;
-        ctx.shadowColor = "rgba(100,246,255,.85)";
-        ctx.fillStyle = "rgba(100,246,255,.55)";
-        ctx.beginPath();
-        ctx.moveTo(0,-r.r);
-        ctx.lineTo(r.r,0);
-        ctx.lineTo(0,r.r);
-        ctx.lineTo(-r.r,0);
-        ctx.closePath();
-        ctx.fill();
-
-        // highlight
-        ctx.fillStyle = "rgba(255,255,255,.75)";
-        ctx.fillRect(-2, -r.r-2, 4, 6);
-        ctx.restore();
-      }
-
-      // drones
-      for(const d of drones){
-        ctx.save();
-        ctx.translate(d.x, d.y);
-        const elite = d.kind==="elite";
-        const col = elite ? "rgba(255,75,92,.95)" : "rgba(100,246,255,.95)";
-        const col2 = elite ? "rgba(255,85,229,.85)" : "rgba(255,85,229,.85)";
-
-        // glow body
-        ctx.shadowBlur = elite ? 38 : 30;
-        ctx.shadowColor = col;
-        ctx.fillStyle = elite ? "rgba(255,75,92,.35)" : "rgba(100,246,255,.30)";
-        ctx.beginPath();
-        ctx.arc(0,0, d.r+6, 0, Math.PI*2);
-        ctx.fill();
-
-        // core
-        ctx.shadowBlur = 20;
-        ctx.shadowColor = col2;
-        ctx.fillStyle = "rgba(255,255,255,.20)";
-        ctx.beginPath();
-        ctx.arc(0,0, d.r, 0, Math.PI*2);
-        ctx.fill();
-
-        // eye
-        ctx.shadowBlur = 18;
-        ctx.shadowColor = "rgba(255,255,255,.75)";
-        ctx.fillStyle = elite ? "rgba(255,255,255,.92)" : "rgba(255,211,106,.92)";
-        ctx.fillRect(-6, -2, 12, 4);
-
-        ctx.restore();
-      }
-
-      // boss
-      if(boss){
-        ctx.save();
-        ctx.translate(boss.x, boss.y);
-        ctx.shadowBlur = 46;
-        ctx.shadowColor = "rgba(255,85,229,.85)";
-        ctx.fillStyle = "rgba(255,85,229,.22)";
-        ctx.beginPath();
-        ctx.arc(0,0,boss.r+10,0,Math.PI*2);
-        ctx.fill();
-
-        ctx.shadowBlur = 28;
-        ctx.shadowColor = "rgba(100,246,255,.90)";
-        ctx.fillStyle = "rgba(100,246,255,.22)";
-        ctx.beginPath();
-        ctx.arc(0,0,boss.r,0,Math.PI*2);
-        ctx.fill();
-
-        // segmented ring
-        for(let i=0;i<10;i++){
-          const a = (i/10)*Math.PI*2 + boss.phase*0.6;
-          const x = Math.cos(a)*(boss.r-8);
-          const y = Math.sin(a)*(boss.r-8);
-          ctx.fillStyle = i%2 ? "rgba(255,211,106,.85)" : "rgba(255,255,255,.55)";
-          ctx.fillRect(x-3,y-3,6,6);
-        }
-
-        // HP
-        ctx.restore();
-        drawTextGlow(`Sentinel HP: ${boss.hp}`, W-34, 62, 18, "rgba(255,85,229,.85)", "right");
-
-        // orbs
-        for(const o of boss.orbs){
-          ctx.save();
-          ctx.translate(o.x, o.y);
-          ctx.shadowBlur = 26;
-          ctx.shadowColor = "rgba(255,75,92,.85)";
-          ctx.fillStyle = "rgba(255,75,92,.30)";
-          ctx.beginPath();
-          ctx.arc(0,0,o.r+6,0,Math.PI*2);
-          ctx.fill();
-          ctx.shadowBlur = 16;
-          ctx.shadowColor = "rgba(255,255,255,.75)";
-          ctx.fillStyle = "rgba(255,255,255,.35)";
-          ctx.beginPath();
-          ctx.arc(0,0,o.r,0,Math.PI*2);
-          ctx.fill();
-          ctx.restore();
-        }
-      }
-
-      // gate
-      const gateX = W - 120, gateY = 520, gateW=60, gateH=80;
-      ctx.save();
-      ctx.shadowBlur = 34;
-      ctx.shadowColor = world.gateOpen ? "rgba(48,255,154,.95)" : "rgba(255,255,255,.22)";
-      ctx.fillStyle = world.gateOpen ? "rgba(48,255,154,.22)" : "rgba(255,255,255,.06)";
-      ctx.fillRect(gateX, gateY, gateW, gateH);
-      ctx.strokeStyle = world.gateOpen ? "rgba(48,255,154,.55)" : "rgba(255,255,255,.14)";
-      ctx.lineWidth = 2;
-      ctx.strokeRect(gateX+1, gateY+1, gateW-2, gateH-2);
-      ctx.restore();
-
-      // player trail
-      ctx.save();
-      for(let i=0;i<player.trail.length;i++){
-        const pt = player.trail[i];
-        const a = clamp(1 - pt.t*3.0, 0, 1) * 0.25;
-        ctx.globalAlpha = a;
-        ctx.shadowBlur = 18;
-        ctx.shadowColor = "rgba(255,85,229,.75)";
-        ctx.fillStyle = "rgba(255,85,229,.18)";
-        ctx.beginPath();
-        ctx.arc(pt.x, pt.y, 14 - i*0.5, 0, Math.PI*2);
-        ctx.fill();
-      }
-      ctx.restore();
-
-      // player
-      const inv = player.invulnT > 0;
-      ctx.save();
-      ctx.translate(player.x, player.y);
-
-      // glow
-      ctx.shadowBlur = inv ? 40 : 26;
-      ctx.shadowColor = inv ? "rgba(255,211,106,.95)" : "rgba(100,246,255,.90)";
-      ctx.fillStyle = inv ? "rgba(255,211,106,.18)" : "rgba(100,246,255,.16)";
-      ctx.fillRect(-6, -6, player.w+12, player.h+12);
-
-      // body
-      ctx.shadowBlur = 18;
-      ctx.shadowColor = "rgba(255,85,229,.85)";
-      ctx.fillStyle = "rgba(255,255,255,.10)";
-      ctx.fillRect(0, 0, player.w, player.h);
-
-      // neon stripes
-      ctx.fillStyle = "rgba(100,246,255,.60)";
-      ctx.fillRect(4, 8, player.w-8, 4);
-      ctx.fillStyle = "rgba(255,85,229,.55)";
-      ctx.fillRect(4, 18, player.w-8, 3);
-      ctx.fillStyle = "rgba(255,211,106,.55)";
-      ctx.fillRect(4, 28, player.w-8, 3);
-
-      // visor
-      ctx.shadowBlur = 20;
-      ctx.shadowColor = "rgba(255,255,255,.85)";
-      ctx.fillStyle = "rgba(255,255,255,.35)";
-      ctx.fillRect(6, 6, player.w-12, 6);
-
-      ctx.restore();
-
-      // particles
-      for(const p of particles){
-        const life = 1 - (p.t / p.life);
-        ctx.save();
-        ctx.globalAlpha = clamp(life, 0, 1);
-        ctx.shadowBlur = 18;
-        ctx.shadowColor = p.col;
-        ctx.fillStyle = p.col;
-        ctx.fillRect(p.x, p.y, p.s, p.s);
-        ctx.restore();
-      }
-
-      // HUD text
-      drawTextGlow(`Relics: ${world.relics}/${world.goalRelics}`, 26, 54, 18, "rgba(100,246,255,.75)", "left");
-      drawTextGlow(`Lives: ${world.lives}`, 26, 78, 18, "rgba(255,211,106,.75)", "left");
-      drawTextGlow(`Score: ${Math.floor(world.score)}`, W-26, 54, 18, "rgba(100,246,255,.75)", "right");
-
-      if(!world.gateOpen){
-        ctx.save();
-        ctx.globalAlpha = 0.9;
-        drawTextGlow("Collect relics to open the gate →", W-26, 98, 16, "rgba(255,85,229,.65)", "right");
-        ctx.restore();
-      }else{
-        ctx.save();
-        ctx.globalAlpha = 0.95;
-        drawTextGlow("GATE OPEN — RUN!", W-26, 98, 16, "rgba(48,255,154,.75)", "right");
-        ctx.restore();
-      }
-    }
-
-    // ---------- Main loop ----------
-    function loop(){
-      const t = now();
-      dt = Math.min(0.033, (t - lastT) / 1000);
-      lastT = t;
-
-      if(running && !paused){
-        update(dt);
-      }
-
-      draw();
-      requestAnimationFrame(loop);
-    }
-
-    // ---------- Button wiring ----------
-    btnStart.addEventListener("click", ()=> startLevel(1));
-    btnContinue.addEventListener("click", ()=> startLevel(progress.lastLevel));
-    btnHow.addEventListener("click", ()=> showHow());
-    btnReset.addEventListener("click", ()=> {
-      if(confirm("Reset all progress and best score?")) resetAll();
-    });
-
-    btnSound.addEventListener("click", async ()=>{
-      audioOn = !audioOn;
-      btnSound.textContent = audioOn ? "🔊 Sound: On" : "🔇 Sound: Off";
-      if(audioOn){
-        // resume audio context on gesture
-        ensureAudio();
-        if(AC.state === "suspended") await AC.resume();
-        beep(660, 0.06, "triangle", 0.55);
-      }
-    });
-
-    modalStart.addEventListener("click", ()=> startLevel(1));
-    modalHow.addEventListener("click", ()=> showHow());
-    modalClose.addEventListener("click", ()=> hideModal());
-
-    // Start with home modal
-    uiLevel.textContent = "—";
-    uiLives.textContent = String(world.lives);
-    uiGoal.textContent = "—";
-    uiRelics.textContent = "0";
-    uiDistrict.textContent = "—";
-    uiStatus.textContent = "Ready";
-
-    showHome();
-    requestAnimationFrame(loop);
-
-    // Small UX: clicking canvas focuses it for keyboard users
-    canvas.addEventListener("click", ()=>{
-      if(audioOn){
-        ensureAudio();
-        if(AC && AC.state === "suspended") AC.resume();
-      }
-    });
-  </script>
-</body>
-</html>
+    placeNoInitial();
+    window.addEventListener("resize", placeNoInitial);
+
+    function moveNoButton(){
+      const rect = btnArena.getBoundingClientRect();
+      const padding = 10;
+
+      // sometimes vanish briefly then reappear elsewhere
+      if(Math.random() < 0.22){
+        noBtn.style.opacity = "0";
+        noBtn.style.pointerEvents = "none";
+        setTimeout(()=>{
+       
