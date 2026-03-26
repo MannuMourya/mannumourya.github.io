@@ -1,872 +1,697 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-    SEO CHECKLIST (matches your screenshot)
-    ✅ Title Tag
-    ✅ Meta Description
-    ✅ Meta Keywords (not used by Google, but included per your checklist)
-    ✅ Canonical URL
-    ✅ Header Tags (H1/H2/H3)
-    ✅ Image ALT Text
-    ✅ Internal Links
-  -->
-
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Title Tag -->
-  <title>Windows Notepad “Hack” in 2026: Tabs, Auto‑Save & Quick Snippets | ByteBloom Blog</title>
-
-  <!-- Meta Description -->
-  <meta name="description" content="Discover a simple Windows Notepad workflow that feels like a hack: persistent tabs, auto‑save behavior, and a lightweight snippet system using pinned files and search. Step-by-step tips + shortcuts." />
-
-  <!-- Meta Keywords (legacy, included because your checklist asks for it) -->
-  <meta name="keywords" content="Windows Notepad hack, Notepad tips, Notepad tabs, Notepad autosave, Windows 11 Notepad, text editor tricks, productivity shortcuts" />
-
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://example.com/blog/windows-notepad-hack" />
-
-  <!-- Open Graph / Social -->
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="Windows Notepad “Hack” in 2026: Tabs, Auto‑Save & Quick Snippets" />
-  <meta property="og:description" content="A lightweight workflow in Windows Notepad that feels like a hack: persistent tabs, auto‑save, and quick snippets." />
-  <meta property="og:url" content="https://example.com/blog/windows-notepad-hack" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Basic structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "Windows Notepad \u201cHack\u201d in 2026: Tabs, Auto\u2011Save & Quick Snippets",
-    "description": "A lightweight workflow in Windows Notepad that feels like a hack: persistent tabs, auto-save, and quick snippets.",
-    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
-    "author": {"@type": "Person", "name": "Mannu"},
-    "publisher": {"@type": "Organization", "name": "ByteBloom"},
-    "datePublished": "2026-02-13",
-    "dateModified": "2026-02-13",
-    "mainEntityOfPage": "https://example.com/blog/windows-notepad-hack"
-  }
-  </script>
-
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MedPulse — Health & Science Research Portal</title>
+  <meta name="description" content="Explore the latest breakthroughs in health, medicine, and science. Research articles, interactive tools, and evidence-based insights for students and professionals."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
-    :root{
-      --bg0:#070A12;
-      --bg1:#0B1020;
-      --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.09);
-      --stroke: rgba(255,255,255,.12);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.68);
-      --muted2: rgba(255,255,255,.55);
-      --accent: #7C5CFF;
-      --accent2:#2BE7FF;
-      --ok:#35f0a7;
-      --warn:#ffcc66;
-      --shadow: 0 20px 60px rgba(0,0,0,.45);
-      --radius: 22px;
-      --radius2: 16px;
-      --max: 1100px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    :root {
+      --white:#ffffff; --off-white:#f7f9fc; --bg:#f2f6fa;
+      --surface:#ffffff; --border:#e2eaf3;
+      --teal:#0a7ea4; --teal-light:#e8f4f8; --teal-mid:#b6dcea;
+      --green:#1a8a5a; --green-light:#e8f5ee;
+      --coral:#e05c3a; --coral-light:#fdf0ec;
+      --navy:#0d2d4a; --text:#1a2e3b; --text-mid:#4a6577; --text-dim:#8aa5b8;
+      --shadow-sm:0 2px 12px rgba(13,45,74,.07);
+      --shadow-md:0 8px 32px rgba(13,45,74,.1);
+      --shadow-lg:0 20px 60px rgba(13,45,74,.14);
+      --radius:12px; --radius-sm:6px;
     }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-track{background:var(--bg)}
+    ::-webkit-scrollbar-thumb{background:var(--teal-mid);border-radius:3px}
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: var(--sans);
-      color: var(--text);
-      background:
-        radial-gradient(1200px 900px at 15% 10%, rgba(124,92,255,.35), transparent 55%),
-        radial-gradient(900px 700px at 85% 25%, rgba(43,231,255,.22), transparent 55%),
-        radial-gradient(800px 700px at 35% 90%, rgba(53,240,167,.18), transparent 55%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      overflow-x:hidden;
-    }
+    #progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--green));z-index:1000;width:0%;transition:width .1s linear}
 
-    /* Subtle animated noise */
-    .grain{
-      pointer-events:none;
-      position:fixed;
-      inset:0;
-      opacity:.07;
-      mix-blend-mode:overlay;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-      animation: grain 6s steps(6) infinite;
-    }
-    @keyframes grain{
-      0%{transform:translate(0,0)}
-      20%{transform:translate(-5%, 2%)}
-      40%{transform:translate(-3%, -3%)}
-      60%{transform:translate(2%, 5%)}
-      80%{transform:translate(5%, -2%)}
-      100%{transform:translate(0,0)}
-    }
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;animation:slideDown .7s ease both}
+    @keyframes slideDown{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+    .nav-logo{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--navy);display:flex;align-items:center;gap:10px;text-decoration:none}
+    .nav-logo-dot{width:10px;height:10px;border-radius:50%;background:var(--teal);animation:hb 1.8s ease-in-out infinite}
+    @keyframes hb{0%,100%{transform:scale(1)}14%{transform:scale(1.35)}28%{transform:scale(1)}42%{transform:scale(1.2)}56%{transform:scale(1)}}
+    nav ul{list-style:none;display:flex;gap:4px}
+    nav ul a{color:var(--text-mid);text-decoration:none;font-size:.875rem;font-weight:500;padding:7px 14px;border-radius:6px;transition:color .2s,background .2s}
+    nav ul a:hover{color:var(--teal);background:var(--teal-light)}
+    .nav-cta{background:var(--teal);color:#fff;padding:9px 22px;border-radius:var(--radius-sm);font-size:.875rem;font-weight:600;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s}
+    .nav-cta:hover{background:#086b8c;transform:translateY(-1px);box-shadow:var(--shadow-md)}
 
-    /* Floating blobs */
-    .blob{
-      position:absolute;
-      width:520px;
-      aspect-ratio:1/1;
-      border-radius:999px;
-      filter: blur(40px);
-      opacity:.35;
-      transform: translate3d(0,0,0);
-      animation: float 10s ease-in-out infinite;
-    }
-    .blob.one{left:-180px; top:90px; background: radial-gradient(circle at 30% 30%, rgba(124,92,255,.9), rgba(124,92,255,0));}
-    .blob.two{right:-200px; top:280px; background: radial-gradient(circle at 35% 35%, rgba(43,231,255,.85), rgba(43,231,255,0)); animation-duration: 12s;}
-    .blob.three{left:20%; bottom:-250px; background: radial-gradient(circle at 30% 30%, rgba(53,240,167,.75), rgba(53,240,167,0)); animation-duration: 14s;}
-    @keyframes float{
-      0%,100%{transform:translate3d(0,0,0) scale(1)}
-      50%{transform:translate3d(30px,-20px,0) scale(1.05)}
-    }
+    /* HERO */
+    .hero-wrap{background:var(--white);padding-top:68px}
+    .hero{min-height:calc(100vh - 68px);padding:80px 48px 80px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1200px;margin:0 auto}
+    .hero-left{animation:fadeInL .9s .2s both}
+    @keyframes fadeInL{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:translateX(0)}}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--teal-light);color:var(--teal);padding:6px 14px;border-radius:20px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:24px;border:1px solid var(--teal-mid)}
+    .hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);animation:hb 1.8s infinite}
+    .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.4rem,4.5vw,3.8rem);line-height:1.12;color:var(--navy);margin-bottom:24px}
+    .hero h1 em{font-style:italic;color:var(--teal)}
+    .hero p{font-size:1.05rem;color:var(--text-mid);line-height:1.8;max-width:480px;margin-bottom:40px;font-weight:300}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .btn-primary{background:var(--teal);color:#fff;padding:13px 28px;border-radius:var(--radius-sm);font-size:.9rem;font-weight:600;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:background .2s,transform .15s,box-shadow .2s}
+    .btn-primary:hover{background:#086b8c;transform:translateY(-2px);box-shadow:var(--shadow-md)}
+    .btn-secondary{background:transparent;color:var(--teal);padding:12px 28px;border-radius:var(--radius-sm);font-size:.9rem;font-weight:600;border:1.5px solid var(--teal-mid);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s}
+    .btn-secondary:hover{background:var(--teal-light);border-color:var(--teal)}
+    .hero-right{animation:fadeInR .9s .4s both}
+    @keyframes fadeInR{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:translateX(0)}}
+    .hero-visual{background:var(--white);border-radius:20px;padding:32px;box-shadow:var(--shadow-lg);border:1px solid var(--border);position:relative;overflow:hidden}
+    .hero-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(10,126,164,.08),transparent 70%)}
+    .dna-wrap{position:relative;height:260px}
+    #dna-canvas{width:100%;height:100%;display:block}
+    .vital-chips{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+    .vital-chip{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;display:flex;align-items:center;gap:12px;transition:transform .2s,box-shadow .2s}
+    .vital-chip:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+    .chip-icon{font-size:1.5rem}
+    .chip-label{font-size:.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.5px}
+    .chip-val{font-family:'DM Mono',monospace;font-size:.95rem;font-weight:500;color:var(--navy)}
 
-    /* Top nav */
-    header{
-      position:sticky;
-      top:0;
-      z-index:40;
-      backdrop-filter: blur(14px);
-      background: linear-gradient(180deg, rgba(11,16,32,.78), rgba(11,16,32,.45));
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    .nav{
-      max-width: var(--max);
-      margin:0 auto;
-      padding:14px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      text-decoration:none;
-      color:var(--text);
-    }
-    .logo{
-      width:38px;height:38px;
-      border-radius:12px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(43,231,255,.95), transparent 55%),
-        radial-gradient(circle at 70% 70%, rgba(124,92,255,.95), transparent 55%),
-        rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-    .brand strong{font-weight:800; letter-spacing:.2px}
-    .brand span{color:var(--muted); font-size:12px; display:block; margin-top:2px}
+    /* STATS */
+    .stats-strip{background:var(--navy);padding:48px 0}
+    .container{max-width:1200px;margin:0 auto;padding:0 48px}
+    .stats-inner{display:grid;grid-template-columns:repeat(4,1fr)}
+    .stat-block{padding:0 32px;text-align:center;border-right:1px solid rgba(255,255,255,.1)}
+    .stat-block:last-child{border-right:none}
+    .stat-n{font-family:'DM Serif Display',serif;font-size:2.8rem;color:#fff;display:block;line-height:1}
+    .stat-n span{color:#7dd3e8}
+    .stat-desc{font-size:.82rem;color:rgba(255,255,255,.5);margin-top:8px;letter-spacing:.3px}
 
-    .navlinks{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .pill{
-      font-size:13px;
-      color: var(--muted);
-      text-decoration:none;
-      padding:9px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-    }
-    .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.16)}
+    /* SECTION */
+    .section{padding:96px 0}
+    .section-label{font-size:.75rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+    .section-label::before{content:'';width:20px;height:1.5px;background:var(--teal)}
+    .section-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--navy);line-height:1.2;margin-bottom:16px}
+    .section-sub{font-size:1rem;color:var(--text-mid);max-width:560px;line-height:1.75;font-weight:300}
 
-    .cta{
-      color:#061018;
-      font-weight:700;
-      border:none;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 14px 40px rgba(124,92,255,.22);
-    }
-    .cta:hover{transform: translateY(-2px)}
+    /* TOPICS */
+    .topics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+    .topic-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:36px 28px;transition:transform .25s,box-shadow .25s,border-color .25s;position:relative;overflow:hidden;cursor:default}
+    .topic-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;transform:scaleX(0);transform-origin:left;transition:transform .35s}
+    .topic-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:transparent}
+    .topic-card:hover::after{transform:scaleX(1)}
+    .tc-teal::after{background:var(--teal)} .tc-green::after{background:var(--green)} .tc-coral::after{background:var(--coral)}
+    .topic-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:20px}
+    .ti-teal{background:var(--teal-light)} .ti-green{background:var(--green-light)} .ti-coral{background:var(--coral-light)}
+    .topic-card h3{font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--navy);margin-bottom:10px}
+    .topic-card p{font-size:.9rem;color:var(--text-mid);line-height:1.75;font-weight:300}
+    .topic-link{display:inline-flex;align-items:center;gap:6px;margin-top:20px;font-size:.85rem;font-weight:600;color:var(--teal);text-decoration:none;transition:gap .2s}
+    .topic-link:hover{gap:10px}
 
-    /* Main layout */
-    main{
-      position:relative;
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 24px 18px 86px;
-    }
+    /* BODY SECTION */
+    .body-section{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .body-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    #body-canvas{width:100%;height:420px;display:block}
+    .body-info h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--navy);margin-bottom:20px;line-height:1.2}
+    .body-info p{color:var(--text-mid);line-height:1.8;font-weight:300;margin-bottom:28px}
+    .system-pills{display:flex;flex-wrap:wrap;gap:8px}
+    .sys-pill{padding:6px 14px;border-radius:20px;font-size:.78rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+    .sp-cardio{background:#fde8e8;color:#c0392b;border:1px solid #f5b7b1} .sp-cardio.active,.sp-cardio:hover{background:#c0392b;color:#fff;border-color:#c0392b}
+    .sp-neuro{background:var(--teal-light);color:var(--teal);border:1px solid var(--teal-mid)} .sp-neuro.active,.sp-neuro:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
+    .sp-digest{background:#fef9e7;color:#d4ac0d;border:1px solid #f9e79f} .sp-digest.active,.sp-digest:hover{background:#d4ac0d;color:#fff;border-color:#d4ac0d}
+    .sp-immune{background:var(--green-light);color:var(--green);border:1px solid #a9dfbf} .sp-immune.active,.sp-immune:hover{background:var(--green);color:#fff;border-color:var(--green)}
+    .sp-musculo{background:var(--coral-light);color:var(--coral);border:1px solid #f5cba7} .sp-musculo.active,.sp-musculo:hover{background:var(--coral);color:#fff;border-color:var(--coral)}
+    #system-fact{margin-top:24px;padding:16px 20px;background:var(--teal-light);border-left:3px solid var(--teal);border-radius:var(--radius-sm);font-size:.875rem;color:var(--text-mid);line-height:1.75;font-weight:300;transition:all .3s}
 
-    .hero{
-      margin-top: 12px;
-      display:grid;
-      grid-template-columns: 1.3fr .7fr;
-      gap: 18px;
-      align-items:stretch;
-    }
+    /* TIMELINE */
+    .timeline-section{background:var(--off-white)}
+    .timeline{max-width:760px;margin:56px auto 0;position:relative;padding-left:54px}
+    .timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--teal-mid),var(--green),var(--teal-mid))}
+    .tl-item{margin-bottom:44px;position:relative;opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+    .tl-item.visible{opacity:1;transform:translateY(0)}
+    .tl-dot{position:absolute;left:-42px;top:4px;width:18px;height:18px;border-radius:50%;background:var(--white);border:3px solid var(--teal);transition:border-color .3s,transform .3s}
+    .tl-item:hover .tl-dot{border-color:var(--green);transform:scale(1.2)}
+    .tl-year{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--teal);font-weight:500;margin-bottom:6px}
+    .tl-item h4{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--navy);margin-bottom:6px}
+    .tl-item p{font-size:.9rem;color:var(--text-mid);line-height:1.75;font-weight:300}
+    .tl-tag{display:inline-block;margin-top:10px;font-size:.7rem;font-weight:600;padding:3px 10px;border-radius:10px;background:var(--teal-light);color:var(--teal);letter-spacing:.5px}
 
-    @media (max-width: 900px){
-      .hero{grid-template-columns: 1fr;}
-    }
+    /* ADS */
+    .ad-unit{padding:40px 0}
+    .ad-inner{background:var(--white);border:1px dashed var(--border);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:1px}
+    .ad-leaderboard{height:90px}
+    .ad-rect{height:250px;width:300px}
 
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
-      border:1px solid rgba(255,255,255,.12);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
+    /* ARTICLES */
+    .articles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:56px}
+    .article-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform .25s,box-shadow .25s}
+    .article-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md)}
+    .article-thumb{height:180px;position:relative;overflow:hidden}
+    .article-thumb canvas{width:100%;height:100%;display:block}
+    .article-badge{position:absolute;top:14px;left:14px;font-size:.68rem;font-weight:600;padding:4px 10px;border-radius:10px;letter-spacing:.5px}
+    .ab-teal{background:rgba(10,126,164,.9);color:#fff} .ab-green{background:rgba(26,138,90,.9);color:#fff} .ab-coral{background:rgba(224,92,58,.9);color:#fff}
+    .article-body{padding:24px}
+    .article-body h3{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--navy);margin-bottom:10px;line-height:1.35}
+    .article-body p{font-size:.875rem;color:var(--text-mid);line-height:1.75;font-weight:300}
+    .article-footer{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-size:.78rem;color:var(--text-dim)}
+    .read-more{color:var(--teal);font-weight:600;text-decoration:none;display:flex;align-items:center;gap:4px;transition:gap .2s}
+    .read-more:hover{gap:8px}
 
-    .heroCard{
-      padding: 22px;
-      position:relative;
-    }
+    /* QUIZ */
+    .quiz-section{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .quiz-wrap{max-width:680px;margin:56px auto 0}
+    .quiz-card{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);padding:40px}
+    .qpb-wrap{height:4px;background:var(--border);border-radius:2px;margin-bottom:28px;overflow:hidden}
+    .qpf{height:100%;background:linear-gradient(90deg,var(--teal),var(--green));border-radius:2px;transition:width .5s ease}
+    .quiz-meta{display:flex;justify-content:space-between;font-size:.78rem;color:var(--text-dim);font-family:'DM Mono',monospace;margin-bottom:24px}
+    .quiz-q{font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--navy);margin-bottom:28px;line-height:1.4}
+    .quiz-opts{display:flex;flex-direction:column;gap:10px}
+    .quiz-opt{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:14px 18px;text-align:left;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--text);display:flex;align-items:center;gap:12px;transition:all .2s}
+    .quiz-opt-letter{width:26px;height:26px;border-radius:50%;background:var(--bg);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:.72rem;font-weight:500;color:var(--text-dim);flex-shrink:0;transition:all .2s}
+    .quiz-opt:hover{border-color:var(--teal);background:var(--teal-light)}
+    .quiz-opt:hover .quiz-opt-letter{background:var(--teal);border-color:var(--teal);color:#fff}
+    .quiz-opt.correct{border-color:var(--green);background:var(--green-light);color:var(--green)}
+    .quiz-opt.correct .quiz-opt-letter{background:var(--green);border-color:var(--green);color:#fff}
+    .quiz-opt.wrong{border-color:var(--coral);background:var(--coral-light);color:var(--coral)}
+    .quiz-opt.wrong .quiz-opt-letter{background:var(--coral);border-color:var(--coral);color:#fff}
+    .quiz-feedback{margin-top:18px;font-size:.875rem;min-height:22px;font-weight:500}
+    .quiz-next-btn{margin-top:20px;display:none;background:var(--teal);color:#fff;padding:11px 24px;border-radius:var(--radius-sm);font-size:.875rem;font-weight:600;border:none;cursor:pointer;transition:background .2s}
+    .quiz-next-btn:hover{background:#086b8c}
 
-    .kicker{
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      padding:7px 10px;
-      border-radius:999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      color: var(--muted);
-      font-size: 12px;
-      letter-spacing:.2px;
-    }
+    /* CALCULATOR */
+    .calc-section{background:var(--off-white)}
+    .calc-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:48px;max-width:640px;margin:56px auto 0;box-shadow:var(--shadow-sm)}
+    .calc-card h3{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--navy);margin-bottom:8px}
+    .calc-card>p{color:var(--text-mid);font-size:.9rem;margin-bottom:32px;font-weight:300}
+    .calc-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{font-size:.8rem;font-weight:600;color:var(--text-mid);letter-spacing:.3px}
+    .field input{padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:'DM Mono',monospace;font-size:.95rem;color:var(--navy);background:var(--off-white);outline:none;transition:border-color .2s}
+    .field input:focus{border-color:var(--teal);background:var(--white)}
+    .calc-btn{width:100%;padding:13px;background:var(--teal);color:#fff;border:none;border-radius:var(--radius-sm);font-size:.9rem;font-weight:600;cursor:pointer;margin-top:8px;transition:background .2s}
+    .calc-btn:hover{background:#086b8c}
+    .bmi-result{margin-top:28px;padding:24px;border-radius:var(--radius-sm);display:none;animation:fadeUp .4s ease both}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .bmi-score{font-family:'DM Serif Display',serif;font-size:3rem;font-weight:400;line-height:1}
+    .bmi-cat{font-size:.9rem;font-weight:600;margin-top:6px}
+    .bmi-scale{margin-top:20px;height:8px;border-radius:4px;background:linear-gradient(90deg,#74b9ff,#00b894,#fdcb6e,#e17055);position:relative}
+    .bmi-marker{position:absolute;top:-4px;width:16px;height:16px;border-radius:50%;background:var(--navy);border:3px solid var(--white);box-shadow:var(--shadow-sm);transform:translateX(-50%);transition:left .6s ease}
+    .bmi-labels{display:flex;justify-content:space-between;font-size:.68rem;color:var(--text-dim);font-family:'DM Mono',monospace;margin-top:6px}
 
-    .dot{
-      width:9px;height:9px;border-radius:9px;
-      background: radial-gradient(circle at 30% 30%, var(--ok), rgba(53,240,167,0));
-      box-shadow: 0 0 0 3px rgba(53,240,167,.12);
-    }
+    /* NEWSLETTER */
+    .newsletter{background:var(--navy);padding:80px 0;text-align:center}
+    .newsletter h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.4rem);color:#fff;margin-bottom:12px}
+    .newsletter p{color:rgba(255,255,255,.55);margin-bottom:36px;font-weight:300}
+    .nl-form{display:flex;max-width:460px;margin:0 auto;border:1.5px solid rgba(255,255,255,.15);border-radius:var(--radius-sm);overflow:hidden;background:rgba(255,255,255,.07)}
+    .nl-form input{flex:1;padding:13px 18px;background:transparent;border:none;outline:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:.875rem}
+    .nl-form input::placeholder{color:rgba(255,255,255,.35)}
+    .nl-form button{background:var(--teal);color:#fff;padding:13px 24px;border:none;cursor:pointer;font-size:.875rem;font-weight:600;transition:background .2s}
+    .nl-form button:hover{background:#086b8c}
+    #nl-msg{margin-top:14px;font-size:.85rem;color:#7dd3e8;display:none}
 
-    h1{
-      margin:14px 0 10px;
-      font-size: clamp(28px, 3.4vw, 44px);
-      line-height: 1.07;
-      letter-spacing: -0.6px;
-    }
+    /* FOOTER */
+    footer{background:#08202f;padding:64px 48px 32px;color:rgba(255,255,255,.5)}
+    .footer-grid{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+    .footer-brand p{font-size:.875rem;line-height:1.75;margin-top:14px;font-weight:300}
+    .footer-logo{font-family:'DM Serif Display',serif;font-size:1.4rem;color:#fff;display:flex;align-items:center;gap:8px;text-decoration:none}
+    .footer-logo-dot{width:8px;height:8px;border-radius:50%;background:var(--teal)}
+    .footer-col h4{font-size:.75rem;font-weight:600;color:rgba(255,255,255,.75);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:18px}
+    .footer-col ul{list-style:none}
+    .footer-col li{margin-bottom:10px}
+    .footer-col a{color:rgba(255,255,255,.4);text-decoration:none;font-size:.875rem;transition:color .2s}
+    .footer-col a:hover{color:rgba(255,255,255,.9)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;font-size:.78rem;font-family:'DM Mono',monospace}
 
-    .lede{color: var(--muted); font-size: 15.5px; line-height:1.6; max-width: 68ch;}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+    .reveal.visible{opacity:1;transform:translateY(0)}
 
-    .metaRow{
-      margin-top: 16px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
-      color: var(--muted2);
-      font-size: 13px;
+    @media(max-width:900px){
+      nav{padding:0 20px} nav ul{display:none}
+      .hero{grid-template-columns:1fr;padding:80px 24px 60px;gap:40px}
+      .hero-right{display:none}
+      .topics-grid{grid-template-columns:1fr}
+      .body-inner{grid-template-columns:1fr}
+      .stats-inner{grid-template-columns:1fr 1fr}
+      .stat-block{border-bottom:1px solid rgba(255,255,255,.1);padding:20px}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .footer-grid>div:first-child{grid-column:1/-1}
+      .container{padding:0 24px} .section{padding:64px 0}
     }
-
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.10);
-    }
-
-    .chip kbd{
-      font-family: var(--mono);
-      font-size: 12px;
-      padding: 2px 6px;
-      border-radius: 7px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.25);
-      color: rgba(255,255,255,.80);
-    }
-
-    .aside{
-      padding: 18px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-
-    .aside h2{margin:0; font-size:16px; letter-spacing:.2px}
-    .aside p{margin:0; color: var(--muted); font-size: 13.5px; line-height: 1.55}
-
-    .progress{
-      height:10px;
-      width:100%;
-      border-radius: 999px;
-      background: rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.10);
-      overflow:hidden;
-    }
-    .bar{
-      height:100%;
-      width:0;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      transition: width 1.2s ease;
-    }
-
-    .btnRow{display:flex; gap:10px; flex-wrap:wrap; margin-top: 18px;}
-    .btn{
-      cursor:pointer;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      font-weight: 650;
-      font-size: 13px;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-      text-decoration:none;
-    }
-    .btn:hover{transform: translateY(-2px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18)}
-    .btn.primary{background: linear-gradient(135deg, rgba(124,92,255,.92), rgba(43,231,255,.88)); border-color: rgba(255,255,255,.18); color:#04111a}
-
-    /* Article */
-    .content{
-      margin-top: 18px;
-      display:grid;
-      grid-template-columns: 1fr 320px;
-      gap: 18px;
-      align-items:start;
-    }
-    @media (max-width: 980px){
-      .content{grid-template-columns: 1fr;}
-    }
-
-    article{
-      padding: 22px;
-    }
-
-    article h2{
-      margin: 30px 0 10px;
-      font-size: 20px;
-      letter-spacing: -0.2px;
-    }
-
-    article h3{
-      margin: 18px 0 8px;
-      font-size: 15.5px;
-      color: rgba(255,255,255,.88);
-      letter-spacing: .1px;
-    }
-
-    article p{
-      margin: 10px 0;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 15px;
-    }
-
-    .callout{
-      margin: 16px 0;
-      padding: 14px 14px;
-      border-radius: var(--radius2);
-      border: 1px solid rgba(255,255,255,.12);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
-    }
-    .callout strong{color: rgba(255,255,255,.90)}
-
-    .steps{
-      margin: 12px 0;
-      padding: 0;
-      list-style:none;
-      display:grid;
-      gap: 10px;
-    }
-
-    .step{
-      display:flex;
-      gap: 12px;
-      padding: 12px;
-      border-radius: var(--radius2);
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.10);
-      transition: transform .15s ease, background .15s ease;
-    }
-    .step:hover{transform: translateY(-2px); background: rgba(255,255,255,.07)}
-
-    .badge{
-      width: 28px;
-      height: 28px;
-      border-radius: 10px;
-      flex: 0 0 auto;
-      display:grid;
-      place-items:center;
-      font-weight: 800;
-      color: #041018;
-      background: linear-gradient(135deg, rgba(53,240,167,.95), rgba(43,231,255,.85));
-      box-shadow: 0 10px 20px rgba(0,0,0,.25);
-    }
-
-    code{
-      font-family: var(--mono);
-      font-size: 12.5px;
-      color: rgba(255,255,255,.86);
-      background: rgba(0,0,0,.35);
-      border: 1px solid rgba(255,255,255,.10);
-      padding: 2px 6px;
-      border-radius: 8px;
-      white-space: nowrap;
-    }
-
-    pre{
-      margin: 14px 0;
-      padding: 14px;
-      border-radius: var(--radius2);
-      background: rgba(0,0,0,.35);
-      border: 1px solid rgba(255,255,255,.12);
-      overflow:auto;
-      position:relative;
-    }
-    pre code{background:transparent; border:none; padding:0; white-space:pre;}
-
-    .copy{
-      position:absolute;
-      right:10px; top:10px;
-      cursor:pointer;
-      font-size: 12px;
-      padding: 7px 10px;
-      border-radius: 12px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color: rgba(255,255,255,.86);
-      transition: transform .15s ease;
-      user-select:none;
-    }
-    .copy:hover{transform: translateY(-1px)}
-
-    /* Sidebar */
-    aside{
-      padding: 18px;
-      position:sticky;
-      top: 74px;
-    }
-    @media (max-width: 980px){
-      aside{position:relative; top:auto;}
-    }
-
-    .toc{
-      margin: 10px 0 0;
-      padding: 0;
-      list-style:none;
-      display:grid;
-      gap:8px;
-    }
-    .toc a{
-      text-decoration:none;
-      color: var(--muted);
-      font-size: 13.5px;
-      padding: 9px 10px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.0);
-      transition: background .15s ease, border-color .15s ease, transform .15s ease;
-      display:block;
-    }
-    .toc a:hover{background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.10); transform: translateY(-1px)}
-    .toc a.active{background: rgba(124,92,255,.16); border-color: rgba(124,92,255,.35); color: rgba(255,255,255,.88)}
-
-    .miniCard{
-      margin-top: 14px;
-      padding: 14px;
-      border-radius: var(--radius2);
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-    }
-    .miniCard h3{margin:0 0 8px; font-size: 14px}
-    .miniCard p{margin:0; color: var(--muted); font-size: 13.5px; line-height:1.55}
-
-    /* Inline hero image */
-    .heroImg{
-      margin-top: 18px;
-      border-radius: 18px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-    }
-    .heroImg img{display:block; width:100%; height:auto; transform:scale(1.02); transition: transform .7s ease}
-    .heroImg:hover img{transform: scale(1.06)}
-    .caption{padding: 10px 12px; color: var(--muted2); font-size: 12.5px; border-top: 1px solid rgba(255,255,255,.10)}
-
-    /* Footer */
-    footer{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 26px 18px 46px;
-      color: var(--muted2);
-      font-size: 13px;
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:space-between;
-    }
-
-    .footLinks{display:flex; gap:10px; flex-wrap:wrap}
-    .footLinks a{color: var(--muted); text-decoration:none; padding:8px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.04)}
-    .footLinks a:hover{background: rgba(255,255,255,.06)}
-
-    /* Motion preferences */
-    @media (prefers-reduced-motion: reduce){
-      *{animation:none !important; transition:none !important; scroll-behavior:auto !important}
-    }
-
-    /* Reveal animation */
-    .reveal{opacity:0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease;}
-    .reveal.in{opacity:1; transform: translateY(0)}
   </style>
 </head>
-
 <body>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="blob one" aria-hidden="true"></div>
-  <div class="blob two" aria-hidden="true"></div>
-  <div class="blob three" aria-hidden="true"></div>
 
-  <!-- Internal links exist in the nav and in-article TOC -->
-  <header>
-    <nav class="nav" aria-label="Primary">
-      <a class="brand" href="#top" title="Go to top">
-        <span class="logo" aria-hidden="true"></span>
-        <div>
-          <strong>ByteBloom</strong>
-          <span>Minimal, fast, practical tech blogging</span>
-        </div>
-      </a>
-      <div class="navlinks">
-        <a class="pill" href="#latest">Latest</a>
-        <a class="pill" href="#guides">Guides</a>
-        <a class="pill" href="#about">About</a>
-        <a class="pill cta" href="#subscribe">Subscribe</a>
+<div id="progress-bar"></div>
+
+<nav>
+  <a href="#" class="nav-logo"><div class="nav-logo-dot"></div>MedPulse</a>
+  <ul>
+    <li><a href="#topics">Topics</a></li>
+    <li><a href="#timeline">History</a></li>
+    <li><a href="#articles">Research</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+    <li><a href="#calculator">Tools</a></li>
+  </ul>
+  <button class="nav-cta">Subscribe Free</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero-wrap">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Health &amp; Science Research</div>
+      <h1>Understanding the <em>human body,</em> one discovery at a time.</h1>
+      <p>A university research portal bringing evidence-based health science to students, educators, and the curious. Explore biology, medicine, and the innovations transforming healthcare.</p>
+      <div class="hero-actions">
+        <a href="#articles" class="btn-primary">Browse Research <svg viewBox="0 0 16 16" fill="none" width="16" height="16"><path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#quiz" class="btn-secondary">Take the Quiz</a>
       </div>
-    </nav>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="card heroCard reveal">
-        <div class="kicker"><span class="dot" aria-hidden="true"></span> Updated Feb 13, 2026 • 6 min read • Windows</div>
-
-        <!-- H1 (Header Tags) -->
-        <h1>Windows Notepad “Hack” in 2026: Turn it into a Tiny Workspace (Tabs + Auto‑Save + Snippets)</h1>
-
-        <p class="lede">
-          Notepad has quietly evolved into a surprisingly capable scratchpad. This workflow feels like a “hack” because it
-          gives you a mini workspace for notes, logs, and reusable snippets — without installing anything.
-        </p>
-
-        <div class="metaRow" role="list">
-          <span class="chip" role="listitem">Author: <strong>Mannu</strong></span>
-          <span class="chip" role="listitem">Best for: <strong>students</strong>, <strong>IT</strong>, <strong>devs</strong></span>
-          <span class="chip" role="listitem">Shortcut: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd> (Save As)</span>
-        </div>
-
-        <div class="btnRow">
-          <a class="btn primary" href="#how" aria-label="Jump to step-by-step">Jump to steps</a>
-          <a class="btn" href="#toc" aria-label="Open table of contents">Table of contents</a>
-          <button class="btn" id="themeBtn" type="button" aria-label="Toggle sparkle mode">✨ Sparkle mode</button>
-        </div>
-
-        <figure class="heroImg" id="latest">
-          <!-- Image ALT Text (SEO) -->
-          <img
-            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1600&q=80"
-            alt="A close-up of code on a monitor, representing text editing and quick note-taking in Windows Notepad"
-            loading="lazy"
-          />
-          <figcaption class="caption">A lightweight text workflow beats heavy tools when you just need speed.</figcaption>
-        </figure>
-      </div>
-
-      <div class="card aside reveal" aria-label="Reading progress and quick links">
-        <h2>Reading progress</h2>
-        <p>Scroll to see the progress bar fill. Sections highlight automatically as you read.</p>
-        <div class="progress" aria-hidden="true"><div class="bar" id="bar"></div></div>
-
-        <div class="miniCard" id="subscribe">
-          <h3>Subscribe</h3>
-          <p>Get one clean, practical Windows tip each week. No spam, just shortcuts and workflows.</p>
-          <div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap">
-            <input
-              aria-label="Email address"
-              type="email"
-              placeholder="you@domain.com"
-              style="flex:1 1 160px; padding:10px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.14); background: rgba(0,0,0,.25); color: rgba(255,255,255,.92); outline:none"
-            />
-            <button class="btn primary" type="button" id="subBtn">Subscribe</button>
-          </div>
-          <p id="subMsg" style="margin-top:10px; color: rgba(255,255,255,.72); font-size:12.5px"></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="content" aria-label="Blog content and sidebar">
-      <article class="card reveal" id="guides">
-        <!-- H2/H3 header tags throughout -->
-        <h2 id="toc">Table of contents</h2>
-        <p>
-          This article focuses on safe, everyday productivity. No exploits, no shady downloads — just a surprisingly
-          powerful Notepad setup.
-        </p>
-
-        <div class="callout">
-          <strong>Why this feels like a “hack”:</strong> you combine tabs + persistent files + pinned folders + search to
-          build a mini knowledge base you can open in seconds.
-        </div>
-
-        <h2 id="what">What changed in Notepad recently?</h2>
-        <p>
-          Modern Notepad includes quality-of-life features like tabs and more consistent session behavior. Even if you use
-          heavier editors, Notepad is perfect for quick notes, copying logs, and keeping a small set of “always-open” files.
-        </p>
-
-        <h3>What you’ll build</h3>
-        <ul class="steps">
-          <li class="step">
-            <div class="badge">1</div>
-            <div>
-              <strong>Notepad workspace folder</strong>
-              <p style="margin:6px 0 0; color: var(--muted)">A single folder that contains your daily notes, snippets, and logs.</p>
-            </div>
-          </li>
-          <li class="step">
-            <div class="badge">2</div>
-            <div>
-              <strong>Always-open tab set</strong>
-              <p style="margin:6px 0 0; color: var(--muted)">A handful of text files you keep open like “pinned tabs.”</p>
-            </div>
-          </li>
-          <li class="step">
-            <div class="badge">3</div>
-            <div>
-              <strong>Snippet system</strong>
-              <p style="margin:6px 0 0; color: var(--muted)">Reusable blocks of text you can search and paste instantly.</p>
-            </div>
-          </li>
-        </ul>
-
-        <h2 id="how">Step-by-step: the Notepad workflow “hack”</h2>
-        <p>Do this once, and you’ll have a tiny workspace that opens fast and stays organized.</p>
-
-        <h3>Step 1 — Create a Notepad workspace folder</h3>
-        <p>
-          Create a folder like <code>C:\Notepad-Workspace</code>. Add these starter files:
-          <code>Daily.txt</code>, <code>Snippets.txt</code>, <code>Logs.txt</code>, <code>Scratch.txt</code>.
-        </p>
-
-        <h3>Step 2 — Make Notepad open them together</h3>
-        <p>
-          Open all four files in Notepad. Arrange them as tabs. The goal is to make this your default “open set” so you
-          can continue where you left off.
-        </p>
-
-        <div class="callout">
-          <strong>Pro tip:</strong> Keep <code>Snippets.txt</code> structured with headings so search becomes your superpower.
-        </div>
-
-        <h3>Step 3 — Build snippets you can search</h3>
-        <p>
-          Put frequently reused content under clear headings. Example: email templates, command sequences, incident notes,
-          Wi‑Fi troubleshooting steps — anything you copy/paste often.
-        </p>
-
-        <pre><button class="copy" data-copy="#snippet">Copy</button><code id="snippet"># SNIPPETS
-
-## Windows quick info
-- winver
-- msinfo32
-- dxdiag
-
-## Network reset (safe)
-- ipconfig /flushdns
-- ipconfig /release
-- ipconfig /renew
-
-## Helpful paths
-- %TEMP%
-- %APPDATA%
-- %LOCALAPPDATA%
-</code></pre>
-
-        <h3>Step 4 — One shortcut to open everything</h3>
-        <p>
-          Pin your workspace folder to Quick Access and create a desktop shortcut that opens your main file:
-          <code>Daily.txt</code>. From there you’ll open the rest in tabs.
-        </p>
-
-        <h2 id="shortcuts">Shortcuts that make it feel instant</h2>
-        <p>
-          Use these habits to make Notepad feel like a “mini IDE” for text:
-        </p>
-        <ul class="steps">
-          <li class="step"><div class="badge">A</div><div><strong>Search inside Notepad</strong><p style="margin:6px 0 0; color: var(--muted)">Use <code>Ctrl + F</code> to jump to headings in Snippets.</p></div></li>
-          <li class="step"><div class="badge">B</div><div><strong>Keep a daily log</strong><p style="margin:6px 0 0; color: var(--muted)">Append notes with timestamps to <code>Daily.txt</code>.</p></div></li>
-          <li class="step"><div class="badge">C</div><div><strong>Use Windows Search</strong><p style="margin:6px 0 0; color: var(--muted)">Search your workspace folder for keywords across all files.</p></div></li>
-        </ul>
-
-        <h2 id="faq">FAQ</h2>
-
-        <h3>Is this an actual security hack?</h3>
-        <p>
-          No — it’s a productivity “hack”: a clever way to use built-in features for a faster workflow.
-        </p>
-
-        <h3>Does Meta Keywords help SEO?</h3>
-        <p>
-          Most major search engines ignore the meta keywords tag. It’s included here only because your checklist asked
-          for it. The title, description, headings, internal links, and clear content matter far more.
-        </p>
-
-        <h2 id="about">About ByteBloom</h2>
-        <p>
-          ByteBloom is a tiny blog theme built for speed and readability. This demo page is a single HTML file with
-          modern SEO tags, clean semantics, and respectful animations.
-        </p>
-
-        <!-- Internal links inside the article -->
-        <div class="callout">
-          Continue reading: <a href="#latest" style="color: rgba(255,255,255,.88)">Latest posts</a> •
-          <a href="#subscribe" style="color: rgba(255,255,255,.88)">Subscribe</a> •
-          <a href="#top" style="color: rgba(255,255,255,.88)">Back to top</a>
-        </div>
-      </article>
-
-      <aside class="card reveal" aria-label="Table of contents sidebar">
-        <h2 style="margin:0; font-size:16px">On this page</h2>
-        <p style="margin:8px 0 0; color: var(--muted); font-size:13.5px; line-height:1.55">
-          Jump around (internal links). The current section highlights as you scroll.
-        </p>
-        <ul class="toc" id="tocList">
-          <li><a href="#what">What changed</a></li>
-          <li><a href="#how">Step-by-step</a></li>
-          <li><a href="#shortcuts">Shortcuts</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#about">About</a></li>
-        </ul>
-
-        <div class="miniCard" style="margin-top:14px">
-          <h3>SEO elements included</h3>
-          <p>
-            Title, description, keywords, canonical URL, structured data, headings, ALT text, and internal links.
-          </p>
-        </div>
-
-        <div class="miniCard">
-          <h3>Share</h3>
-          <p>Try the “sparkle mode” button for a fun hover effect, and use the copy button on the snippet block.</p>
-        </div>
-      </aside>
-    </section>
-  </main>
-
-  <footer class="reveal" aria-label="Footer">
-    <div>© <span id="year"></span> ByteBloom • Built as a single-file demo</div>
-    <div class="footLinks">
-      <a href="#top">Top</a>
-      <a href="#latest">Latest</a>
-      <a href="#guides">Guides</a>
-      <a href="#subscribe">Subscribe</a>
     </div>
-  </footer>
+    <div class="hero-right">
+      <div class="hero-visual">
+        <div class="dna-wrap"><canvas id="dna-canvas"></canvas></div>
+        <div class="vital-chips">
+          <div class="vital-chip"><span class="chip-icon">❤️</span><div><div class="chip-label">Heart Rate</div><div class="chip-val" id="hr-val">72 bpm</div></div></div>
+          <div class="vital-chip"><span class="chip-icon">🫁</span><div><div class="chip-label">O₂ Saturation</div><div class="chip-val">98.4%</div></div></div>
+          <div class="vital-chip"><span class="chip-icon">🧬</span><div><div class="chip-label">DNA Base Pairs</div><div class="chip-val">3.2 billion</div></div></div>
+          <div class="vital-chip"><span class="chip-icon">🧠</span><div><div class="chip-label">Neurons</div><div class="chip-val">86 billion</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <script>
-    // Smooth scroll
-    document.documentElement.style.scrollBehavior = 'smooth';
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-block reveal"><span class="stat-n" id="s1">0<span>%</span></span><div class="stat-desc">of diseases have a genetic component</div></div>
+      <div class="stat-block reveal"><span class="stat-n" id="s2">0<span>M+</span></span><div class="stat-desc">new medical papers published per year</div></div>
+      <div class="stat-block reveal"><span class="stat-n" id="s3">0<span>T</span></span><div class="stat-desc">global healthcare spending (USD)</div></div>
+      <div class="stat-block reveal"><span class="stat-n" id="s4">0<span>%</span></span><div class="stat-desc">of cancers survivable with early detection</div></div>
+    </div>
+  </div>
+</div>
 
-    // Reveal on scroll
-    const revealEls = [...document.querySelectorAll('.reveal')];
-    const io = new IntersectionObserver((entries)=>{
-      for (const e of entries) {
-        if (e.isIntersecting) e.target.classList.add('in');
+<!-- AD TOP -->
+<div class="container"><div class="ad-unit">
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="XXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+  <div class="ad-inner ad-leaderboard">[ Advertisement — 728×90 Leaderboard ]</div>
+</div></div>
+
+<!-- TOPICS -->
+<section class="section" id="topics">
+  <div class="container">
+    <div class="section-label reveal">Core Topics</div>
+    <h2 class="section-title reveal">What We Explore</h2>
+    <p class="section-sub reveal">From molecular biology to public health policy — the full spectrum of health and life sciences, explained with clarity.</p>
+    <div class="topics-grid">
+      <div class="topic-card tc-teal reveal"><div class="topic-icon ti-teal">🧬</div><h3>Genetics &amp; Genomics</h3><p>From the double helix to CRISPR gene editing — how our DNA defines us and how science is learning to rewrite it to treat disease at its root cause.</p><a href="#" class="topic-link">Explore <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="topic-card tc-green reveal"><div class="topic-icon ti-green">🧠</div><h3>Neuroscience</h3><p>The brain's 86 billion neurons form the most complex structure known. Explore consciousness, memory, mental health, and neurological disorders.</p><a href="#" class="topic-link">Explore <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="topic-card tc-coral reveal"><div class="topic-icon ti-coral">💊</div><h3>Pharmacology</h3><p>How drugs interact with biological systems — from aspirin to mRNA vaccines. The science of developing, testing, and delivering life-saving medicines.</p><a href="#" class="topic-link">Explore <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="topic-card tc-teal reveal"><div class="topic-icon ti-teal">🦠</div><h3>Immunology</h3><p>The body's defence network: T-cells, antibodies, vaccines, autoimmune disease, and how COVID-19 reshaped our understanding of immune response.</p><a href="#" class="topic-link">Explore <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="topic-card tc-green reveal"><div class="topic-icon ti-green">🫀</div><h3>Cardiovascular Health</h3><p>Heart disease remains the world's leading killer. We break down the biology of the circulatory system and the research driving prevention and treatment.</p><a href="#" class="topic-link">Explore <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="topic-card tc-coral reveal"><div class="topic-icon ti-coral">🔬</div><h3>Cell Biology</h3><p>The cell is the fundamental unit of life. Explore mitosis, cellular respiration, stem cells, cancer biology, and the organelles powering every living thing.</p><a href="#" class="topic-link">Explore <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- BODY SYSTEM ANIMATION -->
+<section class="section body-section">
+  <div class="container">
+    <div class="body-inner">
+      <div><canvas id="body-canvas"></canvas></div>
+      <div class="body-info reveal">
+        <div class="section-label">Interactive Model</div>
+        <h2>The Human Body in Motion</h2>
+        <p>The human body runs on 37 trillion cells, coordinates through 45 miles of nerves, and processes 11 million bits of sensory data every second. Select a system to explore.</p>
+        <div class="system-pills">
+          <button class="sys-pill sp-cardio active" onclick="setSystem('cardio',this)">❤️ Cardiovascular</button>
+          <button class="sys-pill sp-neuro" onclick="setSystem('neuro',this)">🧠 Neurological</button>
+          <button class="sys-pill sp-digest" onclick="setSystem('digest',this)">🫃 Digestive</button>
+          <button class="sys-pill sp-immune" onclick="setSystem('immune',this)">🦠 Immune</button>
+          <button class="sys-pill sp-musculo" onclick="setSystem('musculo',this)">💪 Musculoskeletal</button>
+        </div>
+        <div id="system-fact">The heart beats ~100,000 times per day, pumping 2,000 gallons of blood through 60,000 miles of blood vessels — enough to circle the Earth twice.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section timeline-section" id="timeline">
+  <div class="container">
+    <div class="section-label reveal">History of Medicine</div>
+    <h2 class="section-title reveal">Milestones That Changed Healthcare</h2>
+    <p class="section-sub reveal">From ancient remedies to mRNA vaccines — the pivotal discoveries that built modern medicine.</p>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1628</div><h4>William Harvey — Blood Circulation</h4><p>Harvey demonstrated that blood circulates continuously through the body pumped by the heart, overthrowing 1,400 years of Galenic medicine and founding modern physiology.</p><span class="tl-tag">PHYSIOLOGY</span></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1796</div><h4>Edward Jenner — The First Vaccine</h4><p>Jenner showed that inoculation with cowpox protected against smallpox, creating the world's first vaccine and launching the field of immunology that would eventually eradicate smallpox.</p><span class="tl-tag">IMMUNOLOGY</span></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1928</div><h4>Alexander Fleming — Penicillin</h4><p>A contaminated petri dish led to the discovery that Penicillium mould inhibits bacteria. The subsequent development of penicillin antibiotics is estimated to have saved over 200 million lives.</p><span class="tl-tag">MICROBIOLOGY</span></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1953</div><h4>Watson &amp; Crick — The DNA Double Helix</h4><p>The discovery of DNA's structure explained how genetic information is stored and copied — arguably the most important scientific finding of the 20th century, launching molecular biology.</p><span class="tl-tag">GENETICS</span></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2003</div><h4>Human Genome Project Completed</h4><p>After 13 years of international collaboration, the full sequence of human DNA — 3.2 billion base pairs — was mapped, opening the era of personalised and genomic medicine.</p><span class="tl-tag">GENOMICS</span></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2020</div><h4>mRNA Vaccines — A New Platform</h4><p>The pandemic accelerated decades of research, producing the first approved mRNA vaccines in under a year. This platform is now being developed for cancer, HIV, and influenza treatments.</p><span class="tl-tag">VACCINOLOGY</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- AD MID -->
+<div class="container"><div class="ad-unit">
+  <div class="ad-inner ad-leaderboard">[ Advertisement — 728×90 Leaderboard ]</div>
+</div></div>
+
+<!-- ARTICLES -->
+<section class="section" id="articles">
+  <div class="container">
+    <div class="section-label reveal">Latest Research</div>
+    <h2 class="section-title reveal">Featured Articles</h2>
+    <p class="section-sub reveal">Evidence-based science writing for students, researchers, and the health-conscious.</p>
+    <div class="articles-grid">
+      <div class="article-card reveal">
+        <div class="article-thumb"><canvas id="ac1"></canvas><span class="article-badge ab-teal">GENETICS</span></div>
+        <div class="article-body">
+          <h3>CRISPR-Cas9: Rewriting the Code of Life</h3>
+          <p>Gene editing has moved from science fiction to clinical trials. We explore how CRISPR works, its potential to cure genetic diseases, and the ethical debates it raises.</p>
+          <div class="article-footer"><span>Mar 2025 · 9 min read</span><a href="#" class="read-more">Read <svg viewBox="0 0 16 16" fill="none" width="13" height="13"><path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        </div>
+      </div>
+      <div class="article-card reveal">
+        <div class="article-thumb"><canvas id="ac2"></canvas><span class="article-badge ab-green">NEUROSCIENCE</span></div>
+        <div class="article-body">
+          <h3>The Gut-Brain Axis: Your Second Brain</h3>
+          <p>The enteric nervous system contains 500 million neurons and communicates bidirectionally with the brain — influencing mood, cognition, and mental health in surprising ways.</p>
+          <div class="article-footer"><span>Feb 2025 · 7 min read</span><a href="#" class="read-more">Read <svg viewBox="0 0 16 16" fill="none" width="13" height="13"><path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        </div>
+      </div>
+      <div class="article-card reveal">
+        <div class="article-thumb"><canvas id="ac3"></canvas><span class="article-badge ab-coral">ONCOLOGY</span></div>
+        <div class="article-body">
+          <h3>Cancer Immunotherapy: Teaching Immunity to Fight Back</h3>
+          <p>Instead of targeting cancer cells directly, immunotherapy activates the body's immune system to recognise and destroy tumours — producing dramatic results in previously untreatable cases.</p>
+          <div class="article-footer"><span>Jan 2025 · 10 min read</span><a href="#" class="read-more">Read <svg viewBox="0 0 16 16" fill="none" width="13" height="13"><path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="section quiz-section" id="quiz">
+  <div class="container">
+    <div class="section-label reveal" style="justify-content:center">Health Knowledge Quiz</div>
+    <h2 class="section-title reveal" style="text-align:center">Test Your Science IQ</h2>
+    <p class="section-sub reveal" style="margin:0 auto;text-align:center">Five questions on biology, anatomy, and health science fundamentals.</p>
+    <div class="quiz-wrap">
+      <div class="quiz-card reveal">
+        <div class="qpb-wrap"><div class="qpf" id="qpf" style="width:20%"></div></div>
+        <div class="quiz-meta"><span id="q-counter">Question 1 of 5</span><span id="q-score">Score: 0</span></div>
+        <div class="quiz-q" id="q-text"></div>
+        <div class="quiz-opts" id="q-opts"></div>
+        <div class="quiz-feedback" id="q-fb"></div>
+        <button class="quiz-next-btn" id="q-next" onclick="nextQ()">Next Question →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="section calc-section" id="calculator">
+  <div class="container">
+    <div class="section-label reveal" style="justify-content:center">Interactive Tool</div>
+    <h2 class="section-title reveal" style="text-align:center">BMI Calculator</h2>
+    <p class="section-sub reveal" style="margin:0 auto;text-align:center">Body Mass Index is one indicator of healthy weight range. Enter your measurements below.</p>
+    <div class="calc-card reveal">
+      <h3>Calculate Your BMI</h3>
+      <p>BMI is a screening tool, not a diagnostic measure. Always consult a healthcare professional for personalised health advice.</p>
+      <div class="calc-row">
+        <div class="field"><label>Weight (kg)</label><input type="number" id="bmi-w" placeholder="70" min="30" max="300"/></div>
+        <div class="field"><label>Height (cm)</label><input type="number" id="bmi-h" placeholder="170" min="100" max="250"/></div>
+      </div>
+      <button class="calc-btn" onclick="calcBMI()">Calculate BMI</button>
+      <div class="bmi-result" id="bmi-result">
+        <div class="bmi-score" id="bmi-score"></div>
+        <div class="bmi-cat" id="bmi-cat"></div>
+        <div class="bmi-scale"><div class="bmi-marker" id="bmi-marker"></div></div>
+        <div class="bmi-labels"><span>Underweight</span><span>Normal</span><span>Overweight</span><span>Obese</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AD RECTANGLES -->
+<div class="container"><div class="ad-unit" style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;">
+  <div class="ad-inner ad-rect">[ Advertisement — 300×250 ]</div>
+  <div class="ad-inner ad-rect">[ Advertisement — 300×250 ]</div>
+</div></div>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <div class="container">
+    <h2>Stay at the Frontier of Health Science</h2>
+    <p>Weekly summaries of the most important research — no jargon, no noise.</p>
+    <div class="nl-form"><input type="email" id="nl-email" placeholder="your@email.com"/><button onclick="nlSub()">Subscribe</button></div>
+    <p id="nl-msg">✓ Welcome! Your first digest is on the way.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo"><div class="footer-logo-dot"></div>MedPulse</a>
+      <p>An independent university health science research portal. All content is for educational purposes. Not a substitute for professional medical advice.</p>
+    </div>
+    <div class="footer-col"><h4>Topics</h4><ul><li><a href="#">Genetics</a></li><li><a href="#">Neuroscience</a></li><li><a href="#">Immunology</a></li><li><a href="#">Oncology</a></li><li><a href="#">Cardiology</a></li></ul></div>
+    <div class="footer-col"><h4>Resources</h4><ul><li><a href="#">Research Papers</a></li><li><a href="#">Video Lessons</a></li><li><a href="#">Glossary</a></li><li><a href="#">Health Tools</a></li><li><a href="#">Case Studies</a></li></ul></div>
+    <div class="footer-col"><h4>About</h4><ul><li><a href="#">Our Mission</a></li><li><a href="#">Editorial Team</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Contact</a></li><li><a href="#">Advertise</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 MedPulse Research Portal — Educational Use Only</span><span>Not medical advice. Consult a qualified professional.</span></div>
+</footer>
+
+<script>
+/* PROGRESS */
+window.addEventListener('scroll',()=>{
+  document.getElementById('progress-bar').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+});
+
+/* DNA HELIX */
+const dc=document.getElementById('dna-canvas'), dctx=dc.getContext('2d');
+function rDNA(){dc.width=dc.offsetWidth;dc.height=dc.offsetHeight||260}
+rDNA(); window.addEventListener('resize',rDNA);
+let dnaT=0;
+(function drawDNA(){
+  dctx.clearRect(0,0,dc.width,dc.height);
+  const cx=dc.width/2,h=dc.height,pairs=14;
+  for(let i=0;i<=pairs;i++){
+    const frac=i/pairs,y=frac*h,phase=dnaT+frac*Math.PI*4;
+    const x1=cx+Math.cos(phase)*58,x2=cx+Math.cos(phase+Math.PI)*58;
+    dctx.beginPath();dctx.strokeStyle='rgba(10,126,164,'+(0.12+0.08*Math.abs(Math.cos(phase)))+')';
+    dctx.lineWidth=1;dctx.moveTo(x1,y);dctx.lineTo(x2,y);dctx.stroke();
+    const cols=['#0a7ea4','#1a8a5a','#e05c3a','#8b5cf6'];
+    dctx.beginPath();dctx.arc(x1,y,5,0,Math.PI*2);dctx.fillStyle=cols[i%4];dctx.fill();
+    dctx.beginPath();dctx.arc(x2,y,5,0,Math.PI*2);dctx.fillStyle=cols[(i+2)%4];dctx.fill();
+  }
+  [[0,'rgba(10,126,164,0.5)'],[Math.PI,'rgba(26,138,90,0.5)']].forEach(([off,col])=>{
+    dctx.beginPath();
+    for(let i=0;i<=60;i++){const frac=i/60,y=frac*h,x=cx+Math.cos(dnaT+frac*Math.PI*4+off)*58;
+      i===0?dctx.moveTo(x,y):dctx.lineTo(x,y);}
+    dctx.strokeStyle=col;dctx.lineWidth=2.5;dctx.stroke();
+  });
+  dnaT+=0.018;requestAnimationFrame(drawDNA);
+})();
+setInterval(()=>{const v=document.getElementById('hr-val');if(v)v.textContent=(68+Math.floor(Math.random()*9))+' bpm';},2000);
+
+/* BODY SYSTEM CANVAS */
+const bc=document.getElementById('body-canvas'),bctx=bc.getContext('2d');
+bc.style.height='420px';
+function rBody(){bc.width=bc.offsetWidth||420;bc.height=420}
+setTimeout(rBody,50);window.addEventListener('resize',rBody);
+let curSys='cardio',bodyT=0;
+const facts={
+  cardio:'The heart beats ~100,000 times per day, pumping 2,000 gallons of blood through 60,000 miles of blood vessels — enough to circle the Earth twice.',
+  neuro:'The brain contains 86 billion neurons each forming up to 10,000 synaptic connections — more neural configurations than atoms in the observable universe.',
+  digest:'The digestive system is 30 feet long. The small intestine has a surface area of ~250 m² due to microscopic villi that absorb nutrients.',
+  immune:'The immune system produces ~10 million new cells every hour and maintains immunological memory of every pathogen it has ever encountered.',
+  musculo:'The human body has 206 bones and 600+ muscles. Bone is five times stronger than steel by weight and regenerates itself completely every 10 years.'
+};
+function setSystem(s,btn){
+  curSys=s;
+  document.querySelectorAll('.sys-pill').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('system-fact').textContent=facts[s];
+}
+const sysColors={cardio:'#e74c3c',neuro:'#0a7ea4',digest:'#d4ac0d',immune:'#1a8a5a',musculo:'#e05c3a'};
+(function drawBody(){
+  if(!bc.width){requestAnimationFrame(drawBody);return}
+  bctx.clearRect(0,0,bc.width,bc.height);
+  const cx=bc.width/2,cy=bc.height/2,t=bodyT,col=sysColors[curSys];
+  // glow bg
+  const g=bctx.createRadialGradient(cx,cy,0,cx,cy,160);
+  g.addColorStop(0,col+'18');g.addColorStop(1,'transparent');
+  bctx.fillStyle=g;bctx.fillRect(0,0,bc.width,bc.height);
+  // figure
+  bctx.save();bctx.strokeStyle='rgba(160,190,210,0.25)';bctx.lineWidth=1.5;
+  bctx.beginPath();bctx.arc(cx,cy-130,32,0,Math.PI*2);bctx.stroke();
+  [[cx-28,cy-98,cx-32,cy+20],[cx+28,cy-98,cx+32,cy+20],[cx-32,cy+20,cx-20,cy+80],[cx+32,cy+20,cx+20,cy+80],
+   [cx-28,cy-98,cx+28,cy-98],[cx-32,cy+20,cx+32,cy+20],[cx-20,cy+80,cx-22,cy+160],[cx+20,cy+80,cx+22,cy+160],
+   [cx-28,cy-80,cx-60,cy-20],[cx-60,cy-20,cx-55,cy+50],[cx+28,cy-80,cx+60,cy-20],[cx+60,cy-20,cx+55,cy+50]
+  ].forEach(([x1,y1,x2,y2])=>{bctx.beginPath();bctx.moveTo(x1,y1);bctx.lineTo(x2,y2);bctx.stroke();});
+  bctx.restore();
+  if(curSys==='cardio'){
+    const beat=0.5+0.5*Math.sin(t*4);
+    bctx.save();bctx.translate(cx-8,cy-60);bctx.scale(1+beat*.15,1+beat*.15);
+    bctx.beginPath();bctx.arc(-7,-5,10,0,Math.PI*2);bctx.arc(7,-5,10,0,Math.PI*2);
+    bctx.lineTo(0,18);bctx.fillStyle=col+'cc';bctx.fill();bctx.restore();
+    const p=(t*.5)%1;
+    [[cx,cy-55,cx,cy+70],[cx,cy+70,cx-15,cy+130],[cx,cy+70,cx+15,cy+130]].forEach(([x1,y1,x2,y2])=>{
+      bctx.beginPath();bctx.moveTo(x1,y1);bctx.lineTo(x2,y2);bctx.strokeStyle=col+'30';bctx.lineWidth=2;bctx.stroke();
+      const px=x1+(x2-x1)*p,py=y1+(y2-y1)*p;
+      bctx.beginPath();bctx.arc(px,py,5,0,Math.PI*2);bctx.fillStyle=col+'99';bctx.fill();
+    });
+  }else if(curSys==='neuro'){
+    for(let w=0;w<3;w++){
+      bctx.beginPath();
+      for(let x=-30;x<=30;x+=2){const y=Math.sin((x*.15+t*1.5+w))*10*(1-w*.2);
+        x===-30?bctx.moveTo(cx+x,cy-90+w*12):bctx.lineTo(cx+x,cy-90+w*12+y);}
+      bctx.strokeStyle=col+(w===0?'cc':'55');bctx.lineWidth=2-w*.5;bctx.stroke();
+    }
+    [[cx-10,cy-100],[cx+10,cy-95],[cx,cy-105],[cx-5,cy-85],[cx+12,cy-108]].forEach(([sx,sy],i)=>{
+      const a=.5+.5*Math.sin(t*3+i);
+      bctx.beginPath();bctx.arc(sx,sy,3,0,Math.PI*2);bctx.fillStyle=col+Math.round(a*255).toString(16).padStart(2,'0');bctx.fill();
+    });
+  }else if(curSys==='digest'){
+    const pts=[[cx,cy-30],[cx-10,cy],[cx+10,cy+30],[cx-5,cy+60],[cx+5,cy+90]];
+    bctx.beginPath();
+    pts.forEach(([px,py],i)=>{const ox=Math.sin(t*2+i)*10;i===0?bctx.moveTo(px+ox,py):bctx.lineTo(px+ox,py);});
+    bctx.strokeStyle=col+'99';bctx.lineWidth=8;bctx.lineCap='round';bctx.stroke();
+    const fp=((t*.3)%1)*5,pi=Math.min(Math.floor(fp),3),fr=fp-pi;
+    const [px1,py1]=pts[pi],[px2,py2]=pts[pi+1];
+    bctx.beginPath();bctx.arc(px1+(px2-px1)*fr+Math.sin(t*2+pi)*10,py1+(py2-py1)*fr,6,0,Math.PI*2);
+    bctx.fillStyle=col;bctx.fill();
+  }else if(curSys==='immune'){
+    for(let i=0;i<6;i++){
+      const a=t+i*(Math.PI*2/6),r=50+Math.sin(t*2+i)*10,ix=cx+Math.cos(a)*r,iy=cy+Math.sin(a)*r;
+      bctx.beginPath();bctx.arc(ix,iy,6,0,Math.PI*2);bctx.fillStyle=col+'bb';bctx.fill();
+      for(let j=0;j<5;j++){
+        const a2=a+j*(Math.PI*2/5);
+        bctx.beginPath();bctx.moveTo(ix,iy);bctx.lineTo(ix+Math.cos(a2+t)*8,iy+Math.sin(a2+t)*8);
+        bctx.strokeStyle=col+'55';bctx.lineWidth=1.5;bctx.stroke();
       }
-    }, {threshold: 0.14});
-    revealEls.forEach(el=>io.observe(el));
+    }
+    bctx.beginPath();bctx.arc(cx,cy,10,0,Math.PI*2);bctx.fillStyle=col;bctx.fill();
+  }else if(curSys==='musculo'){
+    [[cx-25,cy-80,cx-22,cy+60],[cx-10,cy-85,cx-8,cy+65],[cx+10,cy-85,cx+8,cy+65],[cx+25,cy-80,cx+22,cy+60]].forEach(([x1,y1,x2,y2],fi)=>{
+      const c2=.5+.5*Math.sin(t*2+fi*.4),mx=(x1+x2)/2+c2*6;
+      bctx.beginPath();bctx.moveTo(x1,y1);bctx.quadraticCurveTo(mx,(y1+y2)/2,x2,y2);
+      bctx.strokeStyle=col+(Math.round((.5+c2*.4)*255).toString(16).padStart(2,'0'));
+      bctx.lineWidth=2+c2*3;bctx.lineCap='round';bctx.stroke();
+    });
+  }
+  bodyT+=.02;requestAnimationFrame(drawBody);
+})();
 
-    // Progress bar
-    const bar = document.getElementById('bar');
-    const onScroll = () => {
-      const doc = document.documentElement;
-      const scrollTop = doc.scrollTop;
-      const height = doc.scrollHeight - doc.clientHeight;
-      const pct = height ? (scrollTop / height) : 0;
-      bar.style.width = Math.min(100, Math.max(0, pct*100)) + '%';
+/* ARTICLE THUMBS */
+function mkThumb(id,bg,r,g,b){
+  const c=document.getElementById(id);if(!c)return;
+  c.width=c.offsetWidth||400;c.height=180;
+  const ctx=c.getContext('2d');
+  const pts=Array.from({length:24},()=>({x:Math.random()*c.width,y:Math.random()*c.height,vx:(Math.random()-.5)*.7,vy:(Math.random()-.5)*.7}));
+  (function draw(){
+    ctx.fillStyle=bg;ctx.fillRect(0,0,c.width,c.height);
+    pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>c.width)p.vx*=-1;if(p.y<0||p.y>c.height)p.vy*=-1;
+      ctx.beginPath();ctx.arc(p.x,p.y,2.5,0,Math.PI*2);ctx.fillStyle=`rgba(${r},${g},${b},0.6)`;ctx.fill();});
+    for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+      const d=Math.hypot(pts[i].x-pts[j].x,pts[i].y-pts[j].y);
+      if(d<90){ctx.beginPath();ctx.strokeStyle=`rgba(${r},${g},${b},${(.12*(1-d/90)).toFixed(2)})`;
+        ctx.lineWidth=.8;ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke();}
+    }
+    requestAnimationFrame(draw);
+  })();
+}
+setTimeout(()=>{
+  mkThumb('ac1','#e8f4f8',10,126,164);
+  mkThumb('ac2','#e8f5ee',26,138,90);
+  mkThumb('ac3','#fdf0ec',224,92,58);
+},150);
+
+/* COUNTERS */
+function countUp(el,target,suffix,dec){
+  let v=0;const inc=target/2200*16;
+  const ti=setInterval(()=>{v=Math.min(v+inc,target);
+    el.innerHTML=(dec?v.toFixed(dec):Math.floor(v))+suffix;
+    if(v>=target)clearInterval(ti);},16);
+}
+
+/* OBSERVERS */
+const obs=new IntersectionObserver(e=>{
+  e.forEach(en=>{
+    if(!en.isIntersecting)return;
+    en.target.classList.add('visible');
+    if(en.target.id==='s1')countUp(en.target,60,'<span>%</span>',0);
+    if(en.target.id==='s2')countUp(en.target,2.5,'<span>M+</span>',1);
+    if(en.target.id==='s3')countUp(en.target,10.4,'<span>T</span>',1);
+    if(en.target.id==='s4')countUp(en.target,68,'<span>%</span>',0);
+  });
+},{threshold:.2});
+document.querySelectorAll('.reveal,.tl-item').forEach(el=>obs.observe(el));
+
+/* QUIZ */
+const qs=[
+  {q:'What is the powerhouse of the cell?',opts:['Nucleus','Mitochondria','Ribosome','Lysosome'],ans:1},
+  {q:'Which blood type is known as the universal donor?',opts:['Type A','Type B','Type AB','Type O negative'],ans:3},
+  {q:'How many chromosomes does a typical human cell contain?',opts:['23','44','46','48'],ans:2},
+  {q:'Which organ produces insulin to regulate blood sugar?',opts:['Liver','Kidney','Pancreas','Spleen'],ans:2},
+  {q:'What is the most abundant protein in the human body?',opts:['Haemoglobin','Collagen','Myosin','Albumin'],ans:1},
+];
+let qi=0,sc=0,qa=false;
+function loadQ(){
+  const q=qs[qi];
+  document.getElementById('q-counter').textContent=`Question ${qi+1} of ${qs.length}`;
+  document.getElementById('q-score').textContent=`Score: ${sc}`;
+  document.getElementById('qpf').style.width=`${((qi+1)/qs.length)*100}%`;
+  document.getElementById('q-text').textContent=q.q;
+  document.getElementById('q-fb').textContent='';
+  document.getElementById('q-next').style.display='none';
+  qa=false;
+  const opts=document.getElementById('q-opts');opts.innerHTML='';
+  q.opts.forEach((o,i)=>{
+    const btn=document.createElement('button');btn.className='quiz-opt';
+    btn.innerHTML=`<span class="quiz-opt-letter">${String.fromCharCode(65+i)}</span>${o}`;
+    btn.onclick=()=>{
+      if(qa)return;qa=true;
+      document.querySelectorAll('.quiz-opt')[q.ans].classList.add('correct');
+      const fb=document.getElementById('q-fb');
+      if(i===q.ans){sc++;btn.classList.add('correct');fb.textContent='✓ Correct!';fb.style.color='var(--green)';}
+      else{btn.classList.add('wrong');fb.textContent=`✗ Incorrect. Answer: ${q.opts[q.ans]}`;fb.style.color='var(--coral)';}
+      document.getElementById('q-score').textContent=`Score: ${sc}`;
+      if(qi<qs.length-1)document.getElementById('q-next').style.display='block';
+      else setTimeout(()=>{fb.innerHTML=`Quiz complete! You scored <strong>${sc}/${qs.length}</strong>. ${sc>=4?'Excellent work!':sc>=2?'Good understanding!':'Keep exploring MedPulse!'}`},300);
     };
-    window.addEventListener('scroll', onScroll, {passive:true});
-    onScroll();
+    opts.appendChild(btn);
+  });
+}
+function nextQ(){if(qi<qs.length-1){qi++;loadQ();}}
+loadQ();
 
-    // Active TOC
-    const sections = ['what','how','shortcuts','faq','about']
-      .map(id => document.getElementById(id))
-      .filter(Boolean);
-    const tocLinks = [...document.querySelectorAll('#tocList a')];
+/* BMI */
+function calcBMI(){
+  const w=parseFloat(document.getElementById('bmi-w').value),h=parseFloat(document.getElementById('bmi-h').value)/100;
+  if(!w||!h||h<=0)return;
+  const bmi=w/(h*h),el=document.getElementById('bmi-result');
+  el.style.display='block';
+  document.getElementById('bmi-score').textContent=bmi.toFixed(1);
+  let cat,color,pct;
+  if(bmi<18.5){cat='Underweight';color='#74b9ff';pct=5+bmi/18.5*15;}
+  else if(bmi<25){cat='Normal weight';color='#00b894';pct=20+(bmi-18.5)/6.5*30;}
+  else if(bmi<30){cat='Overweight';color='#fdcb6e';pct=50+(bmi-25)/5*25;}
+  else{cat='Obese';color='#e17055';pct=Math.min(93,75+(bmi-30)/10*18);}
+  document.getElementById('bmi-cat').textContent=cat;
+  document.getElementById('bmi-cat').style.color=color;
+  document.getElementById('bmi-score').style.color=color;
+  el.style.background=color+'18';el.style.border=`1px solid ${color}40`;
+  document.getElementById('bmi-marker').style.left=pct+'%';
+}
 
-    const setActive = (id) => {
-      tocLinks.forEach(a => {
-        const isActive = a.getAttribute('href') === '#' + id;
-        a.classList.toggle('active', isActive);
-      });
-    };
-
-    const secObserver = new IntersectionObserver((entries)=>{
-      entries.forEach(entry => {
-        if (entry.isIntersecting) setActive(entry.target.id);
-      });
-    }, {rootMargin: '-35% 0px -55% 0px', threshold: 0.01});
-
-    sections.forEach(s => secObserver.observe(s));
-
-    // Copy button
-    const copyButtons = document.querySelectorAll('[data-copy]');
-    copyButtons.forEach(btn => {
-      btn.addEventListener('click', async () => {
-        const selector = btn.getAttribute('data-copy');
-        const el = document.querySelector(selector);
-        if (!el) return;
-        try{
-          await navigator.clipboard.writeText(el.innerText);
-          btn.textContent = 'Copied';
-          setTimeout(()=>btn.textContent='Copy', 900);
-        }catch{
-          // Fallback
-          const range = document.createRange();
-          range.selectNodeContents(el);
-          const sel = window.getSelection();
-          sel.removeAllRanges();
-          sel.addRange(range);
-          document.execCommand('copy');
-          sel.removeAllRanges();
-          btn.textContent = 'Copied';
-          setTimeout(()=>btn.textContent='Copy', 900);
-        }
-      });
-    });
-
-    // Subscribe demo
-    const subBtn = document.getElementById('subBtn');
-    const subMsg = document.getElementById('subMsg');
-    subBtn.addEventListener('click', () => {
-      subMsg.textContent = '✅ Subscribed (demo) — imagine an API call here.';
-      subMsg.style.color = 'rgba(53,240,167,.85)';
-    });
-
-    // Sparkle mode toggle (fun but subtle)
-    let sparkle = false;
-    const themeBtn = document.getElementById('themeBtn');
-    themeBtn.addEventListener('click', () => {
-      sparkle = !sparkle;
-      document.body.style.background = sparkle
-        ? 'radial-gradient(1200px 900px at 15% 10%, rgba(255,204,102,.22), transparent 55%),\n           radial-gradient(900px 700px at 85% 25%, rgba(43,231,255,.24), transparent 55%),\n           radial-gradient(800px 700px at 35% 90%, rgba(124,92,255,.22), transparent 55%),\n           linear-gradient(180deg, #070A12, #0B1020)'
-        : '';
-      themeBtn.textContent = sparkle ? '✨ Sparkle: ON' : '✨ Sparkle mode';
-    });
-
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+/* NEWSLETTER */
+function nlSub(){
+  const v=document.getElementById('nl-email').value;
+  if(!v||!v.includes('@'))return;
+  document.getElementById('nl-msg').style.display='block';
+  document.getElementById('nl-email').value='';
+}
+</script>
 </body>
 </html>
