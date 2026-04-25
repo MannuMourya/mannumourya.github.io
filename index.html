@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-532QX7HWND"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-532QX7HWND');
-</script>
+  <!-- Google Analytics (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-532QX7HWND"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-532QX7HWND', {
+      anonymize_ip: true,
+      send_page_view: true
+    });
+  </script>
     :root {
       --white:#ffffff; --off-white:#f7f9fc; --bg:#f2f6fa;
       --surface:#ffffff; --border:#e2eaf3;
